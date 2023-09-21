@@ -1,0 +1,64 @@
+:root {
+    --naranja: #FF5757;
+    --morado: #8C52FF;
+}
+
+body {
+    margin: 0;
+}
+
+/**************************************** Header ************************************/
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-image: linear-gradient(to right, var(--naranja) 0%, var(--morado) 100%);
+}
+
+/* Logo */
+.logo {
+    display: flex;
+}
+
+.logo img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+/* Navegación */
+.navegación-principal {
+    display: flex;
+    gap: 2rem;
+}
+
+li {
+    list-style: none;
+    text-decoration: none;
+}
+
+/***************************************** Imagen ************************************/
+.contenedor-imagen {
+    
+}
+
+.imagen {
+    height: 500px;
+}
+
+/**************************************** Cartelera **********************************/
+.contenedor-peliculas {
+    display: flex;
+    gap: 3rem;
+}
+
+.imagen-pelicula {
+    height: 450px;
+    border-radius: 5%;
+}
+
+.titulo-pelicula {
+    text-align: center;
+}
