@@ -5,7 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> MelvinPolis </title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    
     <link href="styles.css" rel="stylesheet">
+    
 </head>
 <body>
     <header>
@@ -18,21 +27,23 @@
             <ul class="navegación-principal">
                 <li> <a href="index.html"> Inicio </a> </li>
 
-                <li>
+                <li class="dropdown">
                     <a href="#"> Más </a>
-
-                    <ul class="navegación-secundaria">
-                        <li> <a href="contacto.html"> Contacto </a> </li>
-                        <li> <a href="sobre-nosotros.html"> Sobre Nosotros </a> </li>
-                    </ul>
+                    
+                    <div class="dropdown-content">
+                        <a href="contacto.html"> Contacto </a>
+                        <a href="sobre-nosotros.html"> Sobre Nosotros </a>
+                    </div>
                 </li>
             </ul>
         </nav>
     </header>
 
     <section class="contenedor-imagen">
-        <img class="imagen" src="imagenes/interestelar.webp" alt="imagen pelicula">
+        <img class="imagen" src="imagenes/interestelar-cover.png" alt="imagen pelicula">
     </section>
+
+    <hr class="div">
 
     <section class="cartelera">
         <h2> Cartelera de Hoy </h2>
