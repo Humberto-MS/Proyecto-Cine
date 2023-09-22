@@ -8,6 +8,7 @@
 body {
     margin: 0;
     font-family: 'Quicksand', sans-serif;
+    background-color: var(--gris);
 }
 
 /**************************************** Header ************************************/
@@ -40,6 +41,7 @@ nav {
     display: flex;
     align-items: center;
 }
+
 .navegación-principal {
     display: flex;
     gap: 1rem;
@@ -76,7 +78,6 @@ li {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-
 }
 
 .dropdown-content a {
@@ -111,7 +112,7 @@ li {
 
 /**************************************** Cartelera **********************************/
 .cartelera {
-    background-color: var(--gris);
+    
     color: white;
 }
 
@@ -133,4 +134,45 @@ li {
 
 .titulo-pelicula {
     text-align: center;
+}
+
+/**************************************** Footer **********************************/
+footer {
+    background-color: var(--gris-oscuro);
+    height: 400px;
+}
+
+footer p {
+    color: white;
+}
+
+.copyright {
+    text-align: center;
+    align-items: end;
+}
+
+.contenido-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem 5rem;
+}
+
+.imagenes-footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.imagen-footer {
+    height: 100px;
+}
+
+.telefono {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.iconos-redes-sociales {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 2rem;
 }
