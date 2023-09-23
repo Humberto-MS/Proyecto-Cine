@@ -3,6 +3,7 @@
     --morado: #8C52FF;
     --gris: #2C282F;
     --gris-oscuro: #1D1B20;
+    --gris-claro: #d9dde0;
 }
 
 body {
@@ -99,21 +100,15 @@ a:hover {
   }
 
 /***************************************** Imagen ************************************/
-.contenedor-imagen {
-    
-}
-
-
 .imagen {
     max-width: 100%;
     height: auto;
 } 
 
-
 /**************************************** Cartelera **********************************/
 .cartelera {
-    
     color: white;
+    margin-bottom: 2rem;
 }
 
 .cartelera h2 {
@@ -136,9 +131,7 @@ a:hover {
     text-align: center;
 }
 
-/*----------------------------------------------------------------------------------------*/
-/**************************************** SOBRE NOSOTROS **********************************/
-/*----------------------------------------------------------------------------------------*/
+/**************************************** Sobre Nosotros **********************************/
 .contenedor-principal-nosotros {
     padding: 2rem 8rem 2rem 4rem;
     background-image: linear-gradient(to top, rgb(218, 218, 218) 0%, white 100%);
@@ -166,7 +159,6 @@ a:hover {
     font-size: 1.1rem;
 }
 
-
 /**************************************** Footer **********************************/
 footer {
     background-color: var(--gris-oscuro);
@@ -185,7 +177,7 @@ footer p {
 .contenido-footer {
     display: flex;
     justify-content: space-between;
-    padding: 3rem 5rem;
+    padding: 3rem 4rem;
 }
 
 .imagenes-footer {
@@ -194,16 +186,28 @@ footer p {
 }
 
 .imagen-footer {
-    height: 100px;
+    height: 75px;
+}
+
+.imagen-footer:nth-child(1) {
+    height: 150px;
 }
 
 .telefono {
     font-size: 2rem;
     font-weight: bold;
+    text-align: center;
+    line-height: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .iconos-redes-sociales {
     display: grid;
     grid-template-columns: 50% 50%;
-    column-gap: 2rem;
+    column-gap: 6rem;
+    row-gap: 4rem;
+    justify-content: center;
+    align-items: center;
 }
