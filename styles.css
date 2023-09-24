@@ -16,7 +16,7 @@ body {
 header {
     display: flex;
     justify-content: space-between;
-    padding: 0.5rem 1.5rem;
+    padding: 0 1.5rem;
     background-image: linear-gradient(to right, var(--naranja) 0%, var(--morado) 100%);
 }
 
@@ -101,9 +101,9 @@ a:hover {
 
 /***************************************** Imagen ************************************/
 .imagen {
-    max-width: 100%;
-    height: auto;
-} 
+    width: 100%;
+    height: 100%;
+}
 
 /**************************************** Cartelera **********************************/
 .cartelera {
@@ -127,15 +127,22 @@ a:hover {
     border-radius: 5%;
 }
 
+.imagen-pelicula:hover {
+    cursor: pointer;
+}
+
 .titulo-pelicula {
     text-align: center;
+}
+
+hr {
+    margin: 0 auto;
+    border: 2px solid #FF5757;
 }
 
 /**************************************** Sobre Nosotros **********************************/
 .contenedor-principal-nosotros {
     padding: 2rem 8rem 2rem 4rem;
-    background-image: linear-gradient(to top, rgb(218, 218, 218) 0%, white 100%);
-
 }
 
 .contenedor-secundario-nosotros {
@@ -157,6 +164,11 @@ a:hover {
 .contenedor-secundario-nosotros p {
     text-align: justify;
     font-size: 1.1rem;
+    color: white;
+}
+
+.contenedor-secundario-nosotros li {
+    color: white;
 }
 
 /**************************************** Footer **********************************/
