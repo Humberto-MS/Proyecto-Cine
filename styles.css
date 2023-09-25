@@ -100,9 +100,53 @@ a:hover {
   }
 
 /***************************************** Imagen ************************************/
+.contenedor-imagen {
+    position: relative;
+}
+
 .imagen {
     width: 100%;
     height: 100%;
+    display: block;
+}
+
+.overlay-inicio {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgb(44 40 47 /60%);
+}
+
+.contenedor-imagen:hover .overlay-inicio {
+    opacity: 1;
+}
+
+.overlay-texto {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.overlay-texto h2 {
+    font-size: 3rem;
+    margin-bottom: 0;
+}
+
+.overlay-texto h3 {
+    opacity: 0.6;
+}
+
+.overlay-texto p {
+    font-size: 1.5rem;
 }
 
 /**************************************** Cartelera **********************************/
@@ -122,9 +166,31 @@ a:hover {
     justify-content: center;
 }
 
+.pelicula {
+    position: relative;
+}
+
+.overlay-pelicula {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgb(44 40 47 /70%);
+}
+
+.pelicula:hover .overlay-pelicula {
+    opacity: 1;
+}
+
 .imagen-pelicula {
     height: 450px;
     border-radius: 5%;
+    display: block;
 }
 
 .imagen-pelicula:hover {
@@ -132,6 +198,7 @@ a:hover {
 }
 
 .titulo-pelicula {
+    position: relative;
     text-align: center;
 }
 
