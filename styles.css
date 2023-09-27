@@ -24,6 +24,26 @@ header {
     background-image: linear-gradient(to right, var(--naranja) 0%, var(--morado) 100%);
 }
 
+/*
+@media ( max-width: 768px ) {
+    header {
+        display: flex;
+        flex-direction: column;
+        background-image: linear-gradient(to right, var(--naranja) 0%, var(--morado) 100%);
+    }
+
+    .logo {
+        display: flex;
+        justify-content: center;
+    }
+
+    .navegación-principal {
+        display: flex;
+        flex-direction: column;
+    }
+}
+*/
+
 /* Logo */
 .logo {
     display: flex;
@@ -173,6 +193,14 @@ nav {
     display: flex;
     gap: 3rem;
     justify-content: center;
+}
+
+@media ( max-width: 768px ) {
+    .contenedor-peliculas {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .pelicula {
