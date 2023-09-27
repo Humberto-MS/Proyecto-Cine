@@ -81,11 +81,201 @@
             </p>
         </div>
 
-        <div class="asientos">
+        <div class="contenedor-horarios">
+            <h2> Horarios </h2>
+
+            <div class="contenido-horarios">
+                <h3> DOB </h3>
+
+                <div class="horarios">
+                    <button id="mostrarModal"> 3:00 </button>
+                    <button id="mostrarModal"> 6:00 </button>
+                    <button id="mostrarModal"> 9:00 </button>
+                </div>                
+            </div>
             
+            <div class="contenido-horarios">
+                <h3> SUB </h3>
+
+                <div class="horarios">
+                    <button id="mostrarModal"> 5:00 </button>
+                    <button id="mostrarModal"> 7:00 </button>
+                    <button id="mostrarModal"> 10:00 </button>
+                </div>                
+            </div>
         </div>
+
+        <!-- TODO: poner trailer -->
     </section>
-   
+
+    <div id="modal-boletos">
+        <div class="contenido-modal-boletos">
+            <span id="cerrarModal" class="cerrar">&times;</span>
+            <h2> Selecciona tus boletos </h2>
+
+            <div class="seleccion-boletos">
+                <div class="boletos">
+                    <p> Adulto </p>
+                    <p> $75.00 </p>
+
+                    <div class="contador-boletos">
+                        <button id="boleto-adulto-menos"> - </button>
+                        <p id="cantidad-boletos">0</p>
+                        <button id="boleto-adulto-mas"> + </button>
+                    </div>
+                </div>
+
+                <div class="boletos">
+                    <p> Niño </p>
+                    <p> $60.00 </p>
+
+                    <div class="contador-boletos">
+                        <button id="boleto-niño-menos"> - </button>
+                        <p id="cantidadBoletos">0</p>
+                        <button id="boleto-niño-mas"> + </button>
+                    </div>
+                </div>
+
+                <div class="boletos">
+                    <p> 3ra Edad </p>
+                    <p> $60.00 </p>
+
+                    <div class="contador-boletos">
+                        <button id="boleto-tEdad-menos"> - </button>
+                        <p id="cantidadBoletos">0</p>
+                        <button id="boleto-tEdad-mas"> + </button>
+                    </div>
+                </div>
+            </div>
+
+            <p class="texto">
+                Total a pagar: $<span id="total">0</span>
+            </p>
+
+            <button id="continuar">Continuar</button>
+        </div>
+    </div>
+
+    <div id="modal-asientos">
+        <div class="contenido-modal-asientos">
+            <span id="cerrarModal" class="cerrar">&times;</span>
+            <h2> Selecciona tus asientos </h2>
+
+            <p class="texto">
+                Cantidad de boletos: $<span id="cantidad-boletos">0</span>
+            </p>
+
+            <ul class="tipos-asientos">
+                <li>
+                    <div class="asiento"></div>
+                    <p> Disponible </p>
+                </li>
+
+                <li>
+                    <div class="asiento seleccionado"></div>
+                    <p> Seleccionado </p>
+                </li>
+
+                <li>
+                    <div class="asiento ocupado"></div>
+                    <p> Ocupado </p>
+                </li>                
+            <ul/>
+
+            <div class="contenedor-asientos">
+                <div class="pantalla"></div>
+                    
+                <div class="fila">
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                </div>
+
+                <div class="fila">
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                </div>
+
+                <div class="fila">
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                </div>
+
+                <div class="fila">
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                </div>
+
+                <div class="fila">
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                </div>
+
+                <div class="fila">
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                    <div class="asiento"></div>
+                </div>                
+            </div>
+
+            <p class="texto">
+                Total a pagar: $<span id="total">0</span>
+            </p>
+
+            <button id="continuar">Continuar</button>
+        </div>
+    </div>
+
+    <div id="modal-pago">
+        <div class="contenido-modal-pago">
+            <span id="cerrarModal" class="cerrar">&times;</span>
+            <h2> Información Personal </h2>
+
+            <div class="inputs-modal-pago">
+                <input type="text" placeholder="Nombre">
+                <input type="text" placeholder="Apellidos">
+                <input type="email" placeholder="Correo">
+                <input type="number" placeholder="Número de la Tarjeta">
+            </div>                
+
+            <button id="continuar">Finalizar</button>
+        </div>
+    </div>   
+       
     <hr>
 
     <footer>
