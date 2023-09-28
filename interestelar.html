@@ -84,9 +84,9 @@
                 <h3> DOB </h3>
 
                 <div class="horarios">
-                    <button id="mostrarModal"> 3:00 </button>
-                    <button id="mostrarModal"> 6:00 </button>
-                    <button id="mostrarModal"> 9:00 </button>
+                    <button id="mostrarModal"> 3:00 PM </button>
+                    <button id="mostrarModal"> 6:00 PM </button>
+                    <button id="mostrarModal"> 9:00 PM </button>
                 </div>                
             </div>
             
@@ -94,9 +94,9 @@
                 <h3> SUB </h3>
 
                 <div class="horarios">
-                    <button id="mostrarModal"> 5:00 </button>
-                    <button id="mostrarModal"> 7:00 </button>
-                    <button id="mostrarModal"> 10:00 </button>
+                    <button id="mostrarModal"> 5:00 PM </button>
+                    <button id="mostrarModal"> 7:00 PM </button>
+                    <button id="mostrarModal"> 10:00 PM </button>
                 </div>                
             </div>
         </div>
@@ -109,7 +109,7 @@
         </iframe>
     </section>
 
-    <div id="modal-boletos">
+    <div id="modal-boletos" class="modal-boletos">
         <div class="contenido-modal-boletos">
             <span id="cerrarModal" class="cerrar">&times;</span>
             <h2> Selecciona tus boletos </h2>
@@ -153,11 +153,13 @@
                 Total a pagar: $<span id="total">0</span>
             </p>
 
-            <button id="continuar-boletos">Continuar</button>
+            <div class="boton-modal">
+                <button id="continuar">Continuar</button>
+            </div>
         </div>
     </div>
 
-    <div id="modal-asientos">
+    <div id="modal-asientos" class="modal-asientos">
         <div class="contenido-modal-asientos">
             <span id="cerrarModal" class="cerrar">&times;</span>
             <h2> Selecciona tus asientos </h2>
@@ -257,11 +259,13 @@
                 Total a pagar: $<span id="total">0</span>
             </p>
 
-            <button id="continuar-asientos">Continuar</button>
+            <div class="boton-modal">
+                <button id="continuar">Continuar</button>
+            </div>
         </div>
     </div>
 
-    <div id="modal-pago">
+    <div id="modal-pago" class="modal-pago">
         <div class="contenido-modal-pago">
             <span id="cerrarModal" class="cerrar">&times;</span>
             <h2> Información Personal </h2>
@@ -273,7 +277,9 @@
                 <input type="number" placeholder="Número de la Tarjeta">
             </div>                
 
-            <button id="finalizar-pago">Finalizar</button>
+            <div class="boton-modal">
+                <button id="continuar">Finalizar</button>
+            </div>
         </div>
     </div>     
        
