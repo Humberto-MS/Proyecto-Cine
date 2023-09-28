@@ -36,43 +36,36 @@ let cantBoletosTEdad = 0;
 let cantBoletosTotal = 0;
 
 mostrarModal.addEventListener ( "click", () => {
-    modalBoletos.style.display = "block";
+    modalBoletos.classList.add ( "mostrar-modal" );
 } );
 
 continuarBoletos.addEventListener ( "click", () => {
-    modalBoletos.style.display = "none";
-    modalAsientos.style.display = "block";
+    modalBoletos.classList.remove ( "mostrar-modal" );
+    modalAsientos.classList.add ( "mostrar-modal" );
     boletosTotales.innerText = cantBoletosTotal;
 } );
 
 continuarAsientos.addEventListener ( "click", () => {
-    modalAsientos.style.display = "none";
-    modalPago.style.display = "block";
+    modalAsientos.classList.remove ( "mostrar-modal" );
+    modalPago.classList.add ( "mostrar-modal" );
 } );
 
 finalizarPago.addEventListener ( "click", () => {
-    modalPago.style.display = "none";
+    modalPago.classList.remove ( "mostrar-modal" );
 } );
 
-// continuar.addEventListener ( "click", ( event ) => {
-//     if ( event.target === modalBoletos ) {
-//         modalBoletos.style.display = "none";
-//         modalAsientos.style.display = "block";
-//         boletosTotales.innerText = cantBoletosTotal;
-//     }
-
-//     if ( event.target === modalAsientos ) {
-//         modalAsientos.style.display = "none";
-//         modalPago.style.display = "block";
-//     }
-
-//     if ( event.target === modalPago ) modalPago.style.display = "none";
-// } );
-
 cerrarModal.addEventListener ( "click", () => {
-    modalBoletos.style.display = "none";
-    modalAsientos.style.display = "none";
-    modalPago.style.display = "none";
+    if ( modalBoletos.classList.contains ("mostrar-modal") ) {
+        modalBoletos.classList.remove ( "mostrar-modal" );
+    }
+
+    if ( modalAsientos.classList.contains ("mostrar-modal") ) {
+        modalAsientos.classList.remove ( "mostrar-modal" );
+    }
+
+    if ( modalPago.classList.contains ("mostrar-modal") ) {
+        modalPago.classList.remove ( "mostrar-modal" );
+    }
 } );
 
 window.addEventListener ( "click", () => {
@@ -150,6 +143,3 @@ contenedor.addEventListener ( "click", ( event ) => {
         event.target.classList.remove ( "seleccionado" );
     }    
 } );
-
-total.innerText = precioTotal;
-boletos.innerText = cantBoletos;
