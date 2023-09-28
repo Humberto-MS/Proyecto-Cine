@@ -248,7 +248,6 @@ hr {
 .seccion-pelicula {
     color: white;
     display: grid;
-    grid-template-columns: 50% 50%;
     padding-top: 122px;
     padding-bottom: 2rem;
 }
@@ -256,7 +255,30 @@ hr {
 .informacion-pelicula {
     padding: 2.5rem;
     box-sizing: border-box;
-    border-right: 2px solid #e5e7eb83;
+    border-bottom: 2px solid #e5e7eb83;
+}
+
+@media ( min-width: 768px ) {
+    .seccion-pelicula {
+        color: white;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        padding-top: 122px;
+        padding-bottom: 2rem;
+    }
+
+    .informacion-pelicula {
+        padding: 2.5rem;
+        box-sizing: border-box;
+        border-right: 2px solid #e5e7eb83;
+    }
+
+    .sinopsis {
+        padding-top: 10px;
+        line-height: 30px;
+        text-align: justify;
+        font-size: 20px;
+    }
 }
 
 .contenido-titulo {
@@ -289,12 +311,16 @@ hr {
     height: 250px;
 }
 
-.contenedor-horarios {
+.contenedor-ht {
     padding: 2.5rem;
 }
 
-.contenedor-horarios h2 {
+.contenedor-ht h2 {
     font-size: 35px;
+}
+
+.contenedor-horarios {
+    padding-bottom: 2rem;
 }
 
 .horarios {
@@ -341,11 +367,16 @@ hr {
     margin-bottom: 1.5rem;
 }
 
+.contenedor-campos {
+    box-sizing: border-box;
+}
+
 @media ( min-width: 768px ) {
     .contenedor-campos {
         display: grid;
         grid-template-columns: 50% 50%;
         grid-template-rows: auto auto 14rem;
+        box-sizing: border-box;
         column-gap: 1rem;
     }
 
@@ -366,13 +397,13 @@ hr {
 
 .campo textarea {
     height: 8rem;
-    width: 94%;
+    width: 100%;
     border-radius: 6px;
     padding: 15px;
 }
 
 .campo input {
-    width: 88%;
+    width: 100%;
     border: none;
     padding: 15px;
     border-radius: 6px;
