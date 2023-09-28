@@ -393,13 +393,13 @@ hr {
 
 .campo textarea {
     height: 8rem;
-    width: 100%;
+    width: 95%;
     border-radius: 6px;
     padding: 15px;
 }
 
 .campo input {
-    width: 100%;
+    width: 90%;
     border: none;
     padding: 15px;
     border-radius: 6px;
