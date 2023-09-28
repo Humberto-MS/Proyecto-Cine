@@ -168,7 +168,7 @@ nav {
     }
 
     .overlay-texto p {
-        font-size: 1.5rem;
+        font-size: 0.75rem;
     }
 }
 
@@ -179,21 +179,21 @@ nav {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    width: 100%;
+    width: 75%;
 }
 
 .overlay-texto h2 {
-    font-size: 0.75rem;
+    font-size: 3rem;
     margin-bottom: 0;
 }
 
 .overlay-texto h3 {
-    font-size: 0.5rem;
+    font-size: 1.5rem;
     opacity: 0.6;
 }
 
 .overlay-texto p {
-    font-size: 0.75rem;
+    font-size: 1.5rem;
 }
 
 /**************************************** Cartelera **********************************/
