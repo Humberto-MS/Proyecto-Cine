@@ -266,6 +266,7 @@ hr {
 .seccion-pelicula {
     color: white;
     display: grid;
+    grid-template-columns: 50% 50%;
     padding-top: 122px;
     padding-bottom: 2rem;
 }
@@ -273,30 +274,7 @@ hr {
 .informacion-pelicula {
     padding: 2.5rem;
     box-sizing: border-box;
-    border-bottom: 2px solid #e5e7eb83;
-}
-
-@media ( min-width: 768px ) {
-    .seccion-pelicula {
-        color: white;
-        display: grid;
-        grid-template-columns: 50% 50%;
-        padding-top: 122px;
-        padding-bottom: 2rem;
-    }
-
-    .informacion-pelicula {
-        padding: 2.5rem;
-        box-sizing: border-box;
-        border-right: 2px solid #e5e7eb83;
-    }
-
-    .sinopsis {
-        padding-top: 10px;
-        line-height: 30px;
-        text-align: justify;
-        font-size: 20px;
-    }
+    border-right: 2px solid #e5e7eb83;
 }
 
 .contenido-titulo {
