@@ -532,7 +532,7 @@ footer p {
     align-items: center;
 }
 
-/**************************************** Modal **********************************/
+/**************************************** Modales **********************************/
 /* Boletos */
 .modal-boletos {
     display: flex;
@@ -609,16 +609,11 @@ footer p {
     color: #000;
 }
 
-.mostrar-modal {
-    opacity: 1;
-    pointer-events: unset;
-}
-
 /* Asientos */
 .modal-asientos {
     display: flex;
     position: fixed;
-    z-index: 1;
+    z-index: 999;
     background-color: rgb(0 0 0 / 0.4);
     width: 100%;
     height: 100%;
@@ -632,28 +627,72 @@ footer p {
     background-color: white;
     margin: auto;
     padding: 30px;
-    width: 30%;
+    width: 50%;
     box-shadow: -5px 5px 10px -1px rgba(0,0,0);
     border-radius: 1rem;
 }
 
+.tipos-asientos {
+    display: flex;
+    justify-content: space-around;
+    padding-left: 0;
+}
+
+.tipos-asientos li{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pantalla {
+    width: 388px;
+    height: 25px;
+    background-color: dimgray;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.5rem 0;
+    margin-bottom: 0.75rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .fila {
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fila .asiento {
+    height: 20px;
+    width: 50px;
 }
 
 .asiento {
     background-image: url(imagenes/asiento.jpeg);
     background-repeat: no-repeat;
+    background-size: contain;
     height: 50px;
     width: 50px;
     padding: 5px;
+}
+
+.seleccionado {
+    background-image: url(imagenes/asiento-seleccionado.jpeg);
+}
+
+.ocupado {
+    background-image: url(imagenes/asiento-ocupado.jpeg);
 }
 
 /* Pago */
 .modal-pago {
     display: flex;
     position: fixed;
-    z-index: 1;
+    z-index: 999;
     background-color: rgb(0 0 0 / 0.4);
     width: 100%;
     height: 100%;
@@ -738,4 +777,9 @@ footer p {
 .cerrar:hover {
     cursor: pointer;
     opacity: 0.6;
+}
+
+.mostrar-modal {
+    opacity: 1;
+    pointer-events: unset;
 }

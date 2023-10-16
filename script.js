@@ -1,12 +1,10 @@
-const mostrarModal = document.getElementById ( "mostrarModal" );
+const mostrarModal = document.querySelectorAll ( ".mostrarModal" );
+const cerrarModal = document.querySelectorAll ( ".cerrar" );
 
 const modalBoletos = document.getElementById ( "modal-boletos" );
 const modalAsientos = document.getElementById ( "modal-asientos" );
 const modalPago = document.getElementById ( "modal-pago" );
 
-const cerrarModal = document.getElementById ( "cerrarModal" );
-
-// const continuar = document.getElementById ( "continuar" );
 const continuarBoletos = document.getElementById ( "continuar-boletos" );
 const continuarAsientos = document.getElementById ( "continuar-asientos" );
 const finalizarPago = document.getElementById ( "finalizar-pago" );
@@ -35,14 +33,40 @@ let cantBoletosNiño = 0;
 let cantBoletosTEdad = 0;
 let cantBoletosTotal = 0;
 
-mostrarModal.addEventListener ( "click", () => {
-    modalBoletos.classList.add ( "mostrar-modal" );
+mostrarModal.forEach ( function ( boton ) {
+    boton.addEventListener ( "click", () => {
+        modalBoletos.classList.add ( "mostrar-modal" );
+    } );
+} );
+
+cerrarModal.forEach ( function ( boton ) {
+    boton.addEventListener ( "click", () => {
+        precioTotal = cantBoletosAdulto = cantBoletosNiño = cantBoletosTEdad = cantBoletosTotal = 0;
+        boletosAdulto.innerText = cantBoletosAdulto;
+        boletosNiño.innerText = cantBoletosNiño;
+        boletosTEdad.innerText = cantBoletosTEdad;
+        total.innerText = precioTotal;  
+
+        if ( modalBoletos.classList.contains ("mostrar-modal") ) {
+            modalBoletos.classList.remove ( "mostrar-modal" );
+        }
+    
+        if ( modalAsientos.classList.contains ("mostrar-modal") ) {
+            modalAsientos.classList.remove ( "mostrar-modal" );
+        }
+    
+        if ( modalPago.classList.contains ("mostrar-modal") ) {
+            modalPago.classList.remove ( "mostrar-modal" );
+        }
+    } );
 } );
 
 continuarBoletos.addEventListener ( "click", () => {
-    modalBoletos.classList.remove ( "mostrar-modal" );
-    modalAsientos.classList.add ( "mostrar-modal" );
-    boletosTotales.innerText = cantBoletosTotal;
+    if ( cantBoletosTotal != 0 ) {
+        modalBoletos.classList.remove ( "mostrar-modal" );
+        modalAsientos.classList.add ( "mostrar-modal" );
+        boletosTotales.innerText = cantBoletosTotal;
+    }    
 } );
 
 continuarAsientos.addEventListener ( "click", () => {
@@ -52,26 +76,12 @@ continuarAsientos.addEventListener ( "click", () => {
 
 finalizarPago.addEventListener ( "click", () => {
     modalPago.classList.remove ( "mostrar-modal" );
-} );
 
-cerrarModal.addEventListener ( "click", () => {
-    if ( modalBoletos.classList.contains ("mostrar-modal") ) {
-        modalBoletos.classList.remove ( "mostrar-modal" );
-    }
-
-    if ( modalAsientos.classList.contains ("mostrar-modal") ) {
-        modalAsientos.classList.remove ( "mostrar-modal" );
-    }
-
-    if ( modalPago.classList.contains ("mostrar-modal") ) {
-        modalPago.classList.remove ( "mostrar-modal" );
-    }
-} );
-
-window.addEventListener ( "click", () => {
-    modalBoletos.style.display = "none";
-    modalAsientos.style.display = "none";
-    modalPago.style.display = "none";
+    precioTotal = cantBoletosAdulto = cantBoletosNiño = cantBoletosTEdad = cantBoletosTotal = 0;
+    boletosAdulto.innerText = cantBoletosAdulto;
+    boletosNiño.innerText = cantBoletosNiño;
+    boletosTEdad.innerText = cantBoletosTEdad;
+    total.innerText = precioTotal;  
 } );
 
 masBoletoAdulto.addEventListener ( "click", () => {
@@ -84,7 +94,7 @@ masBoletoAdulto.addEventListener ( "click", () => {
 } );
 
 menosBoletoAdulto.addEventListener ( "click", () => {
-    if ( cantBoletos != 0 ) {
+    if ( cantBoletosTotal != 0 ) {
         precioTotal -= 75;        
         total.innerText = precioTotal;
 
@@ -104,7 +114,7 @@ masBoletoNiño.addEventListener ( "click", () => {
 } );
 
 menosBoletoNiño.addEventListener ( "click", () => {
-    if ( cantBoletos != 0 ) {
+    if ( cantBoletosTotal != 0 ) {
         precioTotal -= 60;
         total.innerText = precioTotal;
 
@@ -124,7 +134,7 @@ masBoletoTEdad.addEventListener ( "click", () => {
 } );
 
 menosBoletoTEdad.addEventListener ( "click", () => {
-    if ( cantBoletos != 0 ) {
+    if ( cantBoletosTotal != 0 ) {
         precioTotal -= 60;
         total.innerText = precioTotal;
 
