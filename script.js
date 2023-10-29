@@ -19,13 +19,15 @@ const masBoletoTEdad = document.getElementById ( "boleto-tEdad-mas" );
 const menosBoletoTEdad = document.getElementById ( "boleto-tEdad-menos" );
 
 const total = document.getElementById ( "total" );
+const total2 = document.getElementById ( "total2" );
 
 const boletosAdulto = document.getElementById ( "cantidad-boletos-adulto" );
 const boletosNiño = document.getElementById ( "cantidad-boletos-niño" );
 const boletosTEdad = document.getElementById ( "cantidad-boletos-tEdad" );
 const boletosTotales = document.getElementById ( "cantidad-boletos" );
 
-const contenedor = document.querySelector ( ".contenedor-asientos" );
+// const contenedor = document.querySelector ( ".contenedor-asientos" );
+const asientos = document.querySelectorAll ( ".asiento" );
 
 let precioTotal = 0;
 let cantBoletosAdulto = 0;
@@ -45,7 +47,8 @@ cerrarModal.forEach ( function ( boton ) {
         boletosAdulto.innerText = cantBoletosAdulto;
         boletosNiño.innerText = cantBoletosNiño;
         boletosTEdad.innerText = cantBoletosTEdad;
-        total.innerText = precioTotal;  
+        total.innerText = precioTotal;
+        total2.innerText = precioTotal;
 
         if ( modalBoletos.classList.contains ("mostrar-modal") ) {
             modalBoletos.classList.remove ( "mostrar-modal" );
@@ -66,6 +69,7 @@ continuarBoletos.addEventListener ( "click", () => {
         modalBoletos.classList.remove ( "mostrar-modal" );
         modalAsientos.classList.add ( "mostrar-modal" );
         boletosTotales.innerText = cantBoletosTotal;
+        total2.innerText = precioTotal;
     }    
 } );
 
@@ -144,12 +148,24 @@ menosBoletoTEdad.addEventListener ( "click", () => {
     }  
 } );
 
-contenedor.addEventListener ( "click", ( event ) => {
-    if ( event.target.classList.contains ( "asiento" ) && !event.target.classList.contains ( "ocupado" ) ) {
-        event.target.classList.toggle ( "seleccionado" );        
-    }
+asientos.forEach ( function ( asiento ) {
+    asiento.addEventListener ( "click", () => {
+        if ( !asiento.classList.contains ( "seleccionado" ) && !asiento.classList.contains ( "ocupado" ) ) {
+            asiento.classList.add ( "seleccionado" );
+        }
 
-    if ( event.target.classList.contains ( "asiento" ) && event.target.classList.contains ( "seleccionado" ) ) {
-        event.target.classList.remove ( "seleccionado" );
-    }    
+        if ( asiento.classList.contains ( "seleccionado" ) ) {
+            asiento.classList.remove ( "seleccionado" );
+        }
+    } )
 } );
+
+// contenedor.addEventListener ( "click", ( event ) => {
+//     if ( event.target.classList.contains ( "asiento" ) && !event.target.classList.contains ( "ocupado" ) ) {
+//         event.target.classList.toggle ( "seleccionado" );        
+//     }
+
+//     if ( event.target.classList.contains ( "asiento" ) && event.target.classList.contains ( "seleccionado" ) ) {
+//         event.target.classList.remove ( "seleccionado" );
+//     }    
+// } );

@@ -284,14 +284,16 @@
                     <div class="asiento"></div>
                 </div>                
             </div>
+            
+            <div class="contenedor-continuar-asientos">
+                <p class="texto">
+                    Total a pagar: $<span id="total2">0</span>
+                </p>
 
-            <p class="texto">
-                Total a pagar: $<span id="total">0</span>
-            </p>
-
-            <div class="boton-modal">
-                <button id="continuar-asientos">Continuar</button>
-            </div>
+                <div class="boton-modal">
+                    <button id="continuar-asientos">Continuar</button>
+                </div>
+            </div>            
         </div>
     </div>
 
