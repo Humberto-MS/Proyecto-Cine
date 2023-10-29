@@ -340,6 +340,55 @@ hr {
     transition: .5s ease;
 }
 
+/**************************************** Login **********************************/
+.contenedor-login {
+    background-color: var(--gris-oscuro);
+    width: min(20rem, 100%);
+    margin: 138px auto 3rem auto;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: -5px 5px 10px -1px rgba(0,0,0,0.75);
+}
+
+.contenedor-login h2 {
+    color: white;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 2px;
+}
+
+.mensaje-cuenta-nueva {
+    display: flex;
+    justify-content: center;
+    color: white;
+    gap: 0.3rem;
+}
+
+.mensaje-cuenta-nueva a {
+    color: blue;
+    display: flex;
+    align-items: center;
+    text-decoration: underline;
+}
+
+.contenedor-login button {
+    background-color: white;
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    border: none;
+}
+
+.contenedor-login button:hover {
+    cursor: pointer;
+    background-color: var(--naranja);
+    transition: .5s ease;
+}
+
 /**************************************** Contactanos **********************************/
 .contenedor-contacto {
     background-color: var(--gris-oscuro);
