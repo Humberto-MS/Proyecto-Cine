@@ -1,6 +1,6 @@
 <?php
     // Realiza la conexión a la base de datos
-    $conn = mysqli_connect("localhost", "root", "", "u748726467_cine");
+    $conn = mysqli_connect("localhost", "root", "", "cine");
 
     // Verifica la conexión
     if (!$conn) {

@@ -2,7 +2,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "u748726467_cine";
+    $dbname = "cine";
 
     //? Conexión
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -11,7 +11,7 @@
     if ($conn->connect_error) {
         die("Conexión Fallida: ". $conn->connect_error);
     }    
-    echo "Conexión Exitosa";
+    //echo "Conexión Exitosa";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //? Declaración
@@ -42,7 +42,7 @@
                                             '$imagen','$sinopsis','$clasificacion','$genero',
                                             '$director','$reparto','$trailer','$asientos_disponibles')";
             if (mysqli_query($conn, $sql)) {
-                echo "Pelicula Insertada Exitosamente";
+                //echo "Pelicula Insertada Exitosamente";
             } else {
                 echo "Error Al Insertar Pelicula: " . mysqli_error($conn);
             }
@@ -52,7 +52,7 @@
             $sql = "DELETE FROM pelicula WHERE titulo_espanol = '$titulo_espanol'";
 
             if (mysqli_query($conn, $sql)) {
-                echo "Pelicula Eliminada Exitosamente";
+                //echo "Pelicula Eliminada Exitosamente";
             } else {
                 echo "Error Al Eliminar Pelicula: " . mysqli_error($conn);
             }
@@ -72,7 +72,7 @@
                                             WHERE titulo_espanol = '$titulo_espanol'";
             
             if (mysqli_query($conn, $sql)) {
-                echo "Pelicula Modificada Exitosamente";
+                //echo "Pelicula Modificada Exitosamente";
             } else {
                 echo "Error Al Modificar Pelicula: " . mysqli_error($conn);
             }
@@ -83,7 +83,7 @@
                                         VALUES ('$user','$pass','$nombre','$apellido',
                                                 '$correo','$telefono')";
             if (mysqli_query($conn, $sql)) {
-                echo "Cliente Insertado Exitosamente";
+                //echo "Cliente Insertado Exitosamente";
             } else {
                 echo "Error Al Insertar Cliente: " . mysqli_error($conn);
             }
@@ -93,7 +93,7 @@
             $sql = "DELETE FROM cliente WHERE user = '$user'";
 
             if (mysqli_query($conn, $sql)) {
-                echo "Cliente Eliminado Exitosamente";
+                //echo "Cliente Eliminado Exitosamente";
             } else {
                 echo "Error Al Eliminar Cliente: " . mysqli_error($conn);
             }
@@ -109,7 +109,7 @@
                                         WHERE user = '$user'";
 
             if (mysqli_query($conn, $sql)) {
-                echo "Cliente Modificado Exitosamente";
+                //echo "Cliente Modificado Exitosamente";
             } else {
                 echo "Error Al Modificar Cliente: " . mysqli_error($conn);
             }
@@ -133,6 +133,7 @@
 
 </head>
 <body id="body-admin">
+    <h1> Administrador-MelvinPolis </h1>
     <div class="contenedor-admin-peliculas">
         <h2> Base de Datos - Películas </h2>
         <form class="contenedor-database" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
@@ -189,27 +190,27 @@
             <div class="admin-botones"> 
                 <input type="submit" name="alta-pelicula" value="Alta">
                 <input type="submit" name="baja-pelicula" value="Baja">
-                <input type="submit" name="modificar-pelicula" value="Modificar" >
-                
-                <p>
-                    ID Película
-                    <select name="id-pelicula">
-                        <option value="default_titulo"> Selecciona un Título </option>
-                        <?php
-                            if ($conn) {
-                                $sql_titulo = "SELECT titulo_espanol FROM pelicula";
-                                $titulos = mysqli_query($conn, $sql_titulo);
+                <input type="submit" name="modificar-pelicula" value="Modificar">
+                <input type="button" name="limpiar-pelicula" id="limpiar-pelicula" value="Limpiar Campos">  
+            </div>
+
+            <div class="admin-combobox">
+                ID Película
+                <select name="id-pelicula" id="id-pelicula" >
+                    <option value="default_titulo"> Selecciona un Título </option>
+                    <?php
+                        if ($conn) {
+                            $sql_titulo = "SELECT titulo_espanol FROM pelicula";                                $titulos = mysqli_query($conn, $sql_titulo);
                         
-                                if ($titulos) {
-                                    while ($opciones_titulo = mysqli_fetch_assoc($titulos)) {
-                                        echo '<option value="' . $opciones_titulo['titulo_espanol'] . '">' . $opciones_titulo['titulo_espanol'] . '</option>';
-                                    }
+                            if ($titulos) {
+                                while ($opciones_titulo = mysqli_fetch_assoc($titulos)) {
+                                    echo '<option value="' . $opciones_titulo['titulo_espanol'] . '">' . $opciones_titulo['titulo_espanol'] . '</option>';
                                 }
                             }
-                        ?>
-                    </select>
-                </p>   
-            </div>
+                        }
+                    ?>
+                </select>
+            </div> 
         </form>
     </div>
 
@@ -250,71 +251,110 @@
                 <input type="submit" name="alta-cliente" value="Alta" >
                 <input type="submit" name="baja-cliente" value="Baja">
                 <input type="submit" name="modificar-cliente" value="Modificar">
-                
-                <p>
-                    ID Cliente
-                    <select name="id-cliente">
-                        <option value="default_usuario"> Selecciona un Usuario </option>
-                        <?php
-                            if ($conn) {
-                                $sql_usuario = "SELECT user FROM cliente";
-                                $usuarios = mysqli_query($conn, $sql_usuario);
+                <input type="button" name="limpiar-cliente" id="limpiar-cliente" value="Limpiar Campos">   
+            </div>
+
+            <div class="admin-combobox">
+                ID Cliente
+                <select name="id-cliente" id="id-cliente" >
+                    <option value="default_usuario"> Selecciona un Usuario </option>
+                    <?php
+                        if ($conn) {
+                           $sql_usuario = "SELECT user FROM cliente";
+                            $usuarios = mysqli_query($conn, $sql_usuario);
                         
-                                if ($usuarios) {
-                                    while ($opciones_usuario = mysqli_fetch_assoc($usuarios)) {
-                                        echo '<option value="' . $opciones_usuario['user'] . '">' . $opciones_usuario['user'] . '</option>';
-                                    }
+                            if ($usuarios) {
+                                while ($opciones_usuario = mysqli_fetch_assoc($usuarios)) {
+                                    echo '<option value="' . $opciones_usuario['user'] . '">' . $opciones_usuario['user'] . '</option>';
                                 }
                             }
-                        ?>
-                    </select>
-                </p>   
+                        }
+                    ?>
+                </select>
             </div>
         </form>
     </div>
 
     <script>
-        $(document).ready(function() {
-            // Evento de cambio para el combobox de películas
-            $('#id-pelicula').on('change', function() {
-                var tituloSeleccionado = $(this).val();
-                $.ajax({
-                    url: 'obtener_datos_pelicula.php',
-                    method: 'POST',
-                    data: { titulo_espanol: tituloSeleccionado },
-                    success: function(data) {
-                        var datos = JSON.parse(data);
-                        $('#titulo_espanol').val(datos.titulo_espanol);
-                        $('#titulo_ingles').val(datos.titulo_ingles);
-                        $('#imagen').val(datos.imagen);
-                        $('#sinopsis').val(datos.sinopsis);
-                        $('#clasificacion').val(datos.clasificacion);
-                        $('#genero').val(datos.genero);
-                        $('#director').val(datos.director);
-                        $('#reparto').val(datos.reparto);
-                        $('#trailer').val(datos.trailer);
-                        $('#asientos_disponibles').val(datos.asientos_disponibles);
+        // Evento de cambio para el combobox de películas
+        const idPelicula = document.getElementById('id-pelicula');
+        idPelicula.addEventListener('change', function() {
+            const tituloSeleccionado = this.value;
+
+            if (tituloSeleccionado !== 'default_titulo') {
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'obtener_datos_pelicula.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        const data = JSON.parse(xhr.responseText);
+
+                        document.getElementById('titulo_espanol').value = data.titulo_espanol;
+                        document.getElementById('titulo_ingles').value = data.titulo_ingles;
+                        document.getElementById('imagen').value = data.imagen;
+                        document.getElementById('sinopsis').value = data.sinopsis;
+                        document.getElementById('clasificacion').value = data.clasificacion;
+                        document.getElementById('genero').value = data.genero;
+                        document.getElementById('director').value = data.director;
+                        document.getElementById('reparto').value = data.reparto;
+                        document.getElementById('trailer').value = data.trailer;
+                        document.getElementById('asientos_disponibles').value = data.asientos_disponibles;
                     }
-                });
+                };
+                xhr.send(`titulo_espanol=${tituloSeleccionado}`);
+            }
+        });
+
+        // Evento de cambio para el combobox de usuarios
+        const idCliente = document.getElementById('id-cliente');
+        idCliente.addEventListener('change', function() {
+            const usuarioSeleccionado = this.value;
+
+            if (usuarioSeleccionado !== 'default_usuario') {
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'obtener_datos_cliente.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        const data = JSON.parse(xhr.responseText);
+
+                        document.getElementById('user').value = data.user;
+                        document.getElementById('pass').value = data.pass;
+                        document.getElementById('nombre').value = data.nombre;
+                        document.getElementById('apellido').value = data.apellido;
+                        document.getElementById('correo').value = data.correo;
+                        document.getElementById('telefono').value = data.telefono;
+                    }
+                };
+                xhr.send(`user=${usuarioSeleccionado}`);
+            }
+        });
+
+        $(document).ready(function() {
+            // Evento para el botón "Limpiar Campos" de Pelicula
+            $('#limpiar-pelicula').on('click', function() {
+                // Restablece el contenido de los campos de entrada
+                $('#titulo_espanol').val('');
+                $('#titulo_ingles').val('');
+                $('#imagen').val('');
+                $('#sinopsis').val('');
+                $('#clasificacion').val('');
+                $('#genero').val('');
+                $('#director').val('');
+                $('#reparto').val('');
+                $('#trailer').val('');
+                $('#asientos_disponibles').val('');
             });
 
-            // Evento de cambio para el combobox de usuarios
-            $('#combo_usuarios').on('change', function() {
-                var usuarioSeleccionado = $(this).val();
-                $.ajax({
-                    url: 'obtener_datos_cliente.php',
-                    method: 'POST',
-                    data: { user: usuarioSeleccionado },
-                    success: function(data) {
-                        var datos = JSON.parse(data);
-                        $('#user').val(datos.user);
-                        $('#pass').val(datos.pass);
-                        $('#nombre').val(datos.nombre);
-                        $('#apellido').val(datos.apellido);
-                        $('#correo').val(datos.correo);
-                        $('#telefono').val(datos.telefono);
-                    }
-                });
+            // Evento para el botón "Limpiar Campos" de Clientes
+            $('#limpiar-cliente').on('click', function() {
+                // Restablece el contenido de los campos de entrada
+                $('#user').val('');
+                $('#pass').val('');
+                $('#nombre').val('');
+                $('#apellido').val('');
+                $('#correo').val('');
+                $('#telefono').val('');
             });
         });
     </script>
