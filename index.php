@@ -1,3 +1,8 @@
+<?php
+    require __DIR__ . '\funciones.php';
+    $tabla_peliculas = obtener_peliculas();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head> 
@@ -18,7 +23,7 @@
 </head>
 <body>
     <header>
-        <a href="index.html">
+        <a href="index.php">
             <div class="logo">
                 <h1> MelvinPolis </h1>
                 <img src="imagenes/melvin.jpg" alt="melvin image">
@@ -36,13 +41,13 @@
                     </div>
                 </li>
 
-                <li> <a href="index.html"> Inicio </a> </li>
+                <li> <a href="index.php"> Inicio </a> </li>
             </ul>
         </nav>
     </header>
 
     <section class="contenedor-imagen">
-        <a href="oppenheimer.html">
+        <a href="pelicula.php?pelicula=Oppenheimer">
             <img class="imagen" src="imagenes/oppenheimer-cover.jpg" alt="imagen pelicula">
 
             <div class="overlay-inicio">
@@ -66,41 +71,20 @@
         <h2> Cartelera de Hoy </h2>
 
         <div class="contenedor-peliculas">
-            <div class="pelicula">
-                <a href="interestelar.html">
-                    <img class="imagen-pelicula" src="imagenes/interestelar.webp" alt="pelicula interestelar">
-                    <div class="overlay-pelicula"></div>
-                </a>
-                
-                <p class="titulo-pelicula"> Interestelar </p>
-            </div>
+            <?php
+                while ( $pelicula = mysqli_fetch_assoc ( $tabla_peliculas ) ) { 
+                    $imagen = $pelicula [ 'imagen' ];
+                    $titulo = $pelicula [ 'titulo_espanol' ];?>
 
-            <div class="pelicula">
-                <a href="shrek2.html">
-                    <img class="imagen-pelicula" src="imagenes/shrek2.webp" alt="pelicula Shrek 2">
-                    <div class="overlay-pelicula"></div>
-                </a>
-
-                <p class="titulo-pelicula"> Shrek 2 </p>
-            </div>
-
-            <div class="pelicula">
-                <a href="gatoConBotas2.html">
-                    <img class="imagen-pelicula" src="imagenes/gatoConBotas2.jpg" alt="pelicula El Gato Con Botas 2">
-                    <div class="overlay-pelicula"></div>
-                </a>
-
-                <p class="titulo-pelicula"> El Gato Con Botas: El Último Deseo</p>
-            </div>
-
-            <div class="pelicula">
-                <a href="oppenheimer.html">
-                    <img class="imagen-pelicula" src="imagenes/oppenheimer.jpg" alt="pelicula Oppenheimer">
-                    <div class="overlay-pelicula"></div>
-                </a>
-                
-                <p class="titulo-pelicula"> Oppenheimer </p>
-            </div>
+                    <div class="pelicula">
+                        <?php echo "<a href='pelicula.php?pelicula=".$titulo."'>"; ?>
+                            <img class="imagen-pelicula" src=<?php echo $imagen; ?> alt=<?php echo $titulo; ?>>
+                            <div class="overlay-pelicula"></div>
+                        </a>
+                        
+                        <p class="titulo-pelicula"> <?php echo $titulo; ?> </p>
+                    </div>
+                <?php } ?>
         </div>
     </section>
 
