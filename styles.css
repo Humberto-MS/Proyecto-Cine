@@ -954,3 +954,13 @@ footer p {
     padding: 5px;
 }
 
+.cerrar-sesion {
+    padding: 10px;
+}
+
+.cerrar-sesion input:hover {
+    cursor: pointer;
+    background-color: var(--gris-claro);
+    transition: .5s ease;
+}
+
