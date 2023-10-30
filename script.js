@@ -9,6 +9,9 @@ const continuarBoletos = document.getElementById ( "continuar-boletos" );
 const continuarAsientos = document.getElementById ( "continuar-asientos" );
 const finalizarPago = document.getElementById ( "finalizar-pago" );
 
+const regresar_asientos = document.getElementById ( "regresar-asientos" );
+const regresar_pago = document.getElementById ( "regresar-pago" );
+
 const masBoletoAdulto = document.getElementById ( "boleto-adulto-mas" );
 const menosBoletoAdulto = document.getElementById ( "boleto-adulto-menos" );
 
@@ -20,14 +23,19 @@ const menosBoletoTEdad = document.getElementById ( "boleto-tEdad-menos" );
 
 const total = document.getElementById ( "total" );
 const total2 = document.getElementById ( "total2" );
+const total3 = document.getElementById ( "total3" );
 
 const boletosAdulto = document.getElementById ( "cantidad-boletos-adulto" );
 const boletosNiño = document.getElementById ( "cantidad-boletos-niño" );
 const boletosTEdad = document.getElementById ( "cantidad-boletos-tEdad" );
-const boletosTotales = document.getElementById ( "cantidad-boletos" );
 
-// const contenedor = document.querySelector ( ".contenedor-asientos" );
-const asientos = document.querySelectorAll ( ".asiento" );
+const boletosTotales = document.getElementById ( "cantidad-boletos" );
+const boletosTotales_pago = document.getElementById ( "cantidad-boletos-pago" );
+
+const numeros_boletos = document.getElementById ( "numeros-boletos" );
+
+const asientos = document.querySelectorAll ( ".fila .asiento" );
+let asientos_select = [];
 
 let precioTotal = 0;
 let cantBoletosAdulto = 0;
@@ -49,6 +57,7 @@ cerrarModal.forEach ( function ( boton ) {
         boletosTEdad.innerText = cantBoletosTEdad;
         total.innerText = precioTotal;
         total2.innerText = precioTotal;
+        total3.innerText = precioTotal;
 
         if ( modalBoletos.classList.contains ("mostrar-modal") ) {
             modalBoletos.classList.remove ( "mostrar-modal" );
@@ -74,8 +83,14 @@ continuarBoletos.addEventListener ( "click", () => {
 } );
 
 continuarAsientos.addEventListener ( "click", () => {
-    modalAsientos.classList.remove ( "mostrar-modal" );
-    modalPago.classList.add ( "mostrar-modal" );
+    if ( asientos_select.length != 0 && asientos_select.length == cantBoletosTotal ) {
+        modalAsientos.classList.remove ( "mostrar-modal" );
+        modalPago.classList.add ( "mostrar-modal" );
+        asientos_select.sort();
+        boletosTotales_pago.innerText = cantBoletosTotal;
+        numeros_boletos.innerText = asientos_select;
+        total3.innerText = precioTotal;
+    }    
 } );
 
 finalizarPago.addEventListener ( "click", () => {
@@ -86,6 +101,16 @@ finalizarPago.addEventListener ( "click", () => {
     boletosNiño.innerText = cantBoletosNiño;
     boletosTEdad.innerText = cantBoletosTEdad;
     total.innerText = precioTotal;  
+} );
+
+regresar_asientos.addEventListener ( "click", () => {
+    modalAsientos.classList.remove ( "mostrar-modal" );
+    modalBoletos.classList.add ( "mostrar-modal" );
+} );
+
+regresar_pago.addEventListener ( "click", () => {
+    modalPago.classList.remove ( "mostrar-modal" );
+    modalAsientos.classList.add ( "mostrar-modal" );
 } );
 
 masBoletoAdulto.addEventListener ( "click", () => {
@@ -148,24 +173,18 @@ menosBoletoTEdad.addEventListener ( "click", () => {
     }  
 } );
 
-asientos.forEach ( function ( asiento ) {
+asientos.forEach ( asiento => {
     asiento.addEventListener ( "click", () => {
-        if ( !asiento.classList.contains ( "seleccionado" ) && !asiento.classList.contains ( "ocupado" ) ) {
+        if ( !asiento.classList.contains ( "seleccionado" ) 
+                && !asiento.classList.contains ( "ocupado" ) 
+                && asientos_select.length < cantBoletosTotal ) 
+        {
             asiento.classList.add ( "seleccionado" );
-        }
-
-        if ( asiento.classList.contains ( "seleccionado" ) ) {
+            asientos_select.push ( asiento.innerText );
+        } else {
             asiento.classList.remove ( "seleccionado" );
-        }
-    } )
+            let num_asiento = asientos_select.find ( elemento => elemento == asiento.innerText );
+            asientos_select = asientos_select.filter ( value => value != num_asiento );
+        }   
+    } );
 } );
-
-// contenedor.addEventListener ( "click", ( event ) => {
-//     if ( event.target.classList.contains ( "asiento" ) && !event.target.classList.contains ( "ocupado" ) ) {
-//         event.target.classList.toggle ( "seleccionado" );        
-//     }
-
-//     if ( event.target.classList.contains ( "asiento" ) && event.target.classList.contains ( "seleccionado" ) ) {
-//         event.target.classList.remove ( "seleccionado" );
-//     }    
-// } );

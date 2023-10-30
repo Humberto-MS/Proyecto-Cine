@@ -767,10 +767,16 @@ footer p {
 .contenido-modal-pago {
     background-color: white;
     margin: auto;
-    padding: 30px;
-    width: fit-content;
+    padding: 50px;
+    width: 800px;
+    height: auto;
     box-shadow: -5px 5px 10px -1px rgba(0,0,0);
     border-radius: 1rem;
+}
+
+.contenido-pago {
+    display: flex;
+    justify-content: space-between;
 }
 
 @media ( min-width: 768px ) {
@@ -798,6 +804,22 @@ footer p {
     border-radius: 10px;
     width: 100%;
     box-sizing: border-box;
+}
+
+.contendor-botones-pago {
+    display: flex;
+    justify-content: space-between;
+}
+
+.realizar-pago h2, .datos-personales h2 { text-align: center; }
+
+.realizar-pago form {
+    display: flex;
+    justify-content: center;
+}
+
+.realizar-pago .texto {
+    text-align: left;
 }
 
 /* Global */

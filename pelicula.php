@@ -127,8 +127,8 @@
                     <div class="contenedor-trailer">
                         <h2> Trailer </h2>
                         <iframe 
-                            width="400" 
-                            height="250" 
+                            width="600" 
+                            height="350" 
                             src=<?php echo $trailer; ?>
                             allowfullscreen>
                         </iframe>
@@ -219,73 +219,77 @@
                 </div>
                     
                 <div class="fila">
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
+                    <div class="asiento">1A</div>
+                    <div class="asiento">2A</div>
+                    <div class="asiento">3A</div>
+                    <div class="asiento">4A</div>
+                    <div class="asiento">5A</div>
+                    <div class="asiento">6A</div>
+                    <div class="asiento">7A</div>
+                    <div class="asiento">8A</div>
                 </div>
 
                 <div class="fila">
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
+                    <div class="asiento">1B</div>
+                    <div class="asiento">2B</div>
+                    <div class="asiento">3B</div>
+                    <div class="asiento">4B</div>
+                    <div class="asiento">5B</div>
+                    <div class="asiento">6B</div>
+                    <div class="asiento">7B</div>
+                    <div class="asiento">8B</div>
                 </div>
 
                 <div class="fila">
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
+                    <div class="asiento">1C</div>
+                    <div class="asiento">2C</div>
+                    <div class="asiento">3C</div>
+                    <div class="asiento">4C</div>
+                    <div class="asiento">5C</div>
+                    <div class="asiento">6C</div>
+                    <div class="asiento">7C</div>
+                    <div class="asiento">8C</div>
                 </div>
 
                 <div class="fila">
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
+                    <div class="asiento">1D</div>
+                    <div class="asiento">2D</div>
+                    <div class="asiento">3D</div>
+                    <div class="asiento">4D</div>
+                    <div class="asiento">5D</div>
+                    <div class="asiento">6D</div>
+                    <div class="asiento">7D</div>
+                    <div class="asiento">8D</div>
                 </div>
 
                 <div class="fila">
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
+                    <div class="asiento">1E</div>
+                    <div class="asiento">2E</div>
+                    <div class="asiento">3E</div>
+                    <div class="asiento">4E</div>
+                    <div class="asiento">5E</div>
+                    <div class="asiento">6E</div>
+                    <div class="asiento">7E</div>
+                    <div class="asiento">8E</div>
                 </div>
 
                 <div class="fila">
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
-                    <div class="asiento"></div>
+                    <div class="asiento">1F</div>
+                    <div class="asiento">2F</div>
+                    <div class="asiento">3F</div>
+                    <div class="asiento">4F</div>
+                    <div class="asiento">5F</div>
+                    <div class="asiento">6F</div>
+                    <div class="asiento">7F</div>
+                    <div class="asiento">8F</div>
                 </div>                
             </div>
             
-            <div class="contenedor-continuar-asientos">
+            <div class="contenedor-continuar-asientos">                
+                <div class="boton-modal">
+                    <button id="regresar-asientos">Regresar</button>
+                </div>
+
                 <p class="texto">
                     Total a pagar: $<span id="total2">0</span>
                 </p>
@@ -300,18 +304,54 @@
     <div id="modal-pago" class="modal-pago">
         <div class="contenido-modal-pago">
             <span class="cerrar">&times;</span>
-            <h2> Información Personal </h2>
 
-            <div class="inputs-modal-pago">
-                <input type="text" placeholder="Nombre">
-                <input type="text" placeholder="Apellidos">
-                <input type="email" placeholder="Correo">
-                <input type="number" placeholder="Número de la Tarjeta">
-            </div>                
+            <div class="contenido-pago">
+                <div class="datos-personales">
+                    <h2> Información Personal </h2>
 
-            <div class="boton-modal">
-                <button id="finalizar-pago">Finalizar</button>
-            </div>
+                    <div class="inputs-modal-pago">
+                        <input type="text" placeholder="Nombre">
+                        <input type="text" placeholder="Apellidos">
+                        <input type="email" placeholder="Correo">
+                        <input type="number" placeholder="Teléfono">
+                    </div>                
+
+                    <div class="contendor-botones-pago">
+                        <div class="boton-modal">
+                                <button id="regresar-pago">Regresar</button>
+                            </div>
+
+                        <div class="boton-modal">
+                            <button id="finalizar-pago">Finalizar</button>
+                        </div>
+                    </div>   
+                </div>
+
+                <div class="realizar-pago">
+                    <h2> Total a Pagar </h2>
+
+                    <p class="texto">
+                        <b>Cantidad de boletos:</b> <span id="cantidad-boletos-pago">0</span> boleto(s)
+                    </p>
+
+                    <p class="texto">
+                        <b>Boleto(s):</b> <span id="numeros-boletos">0</span>
+                    </p>
+
+                    <p class="texto">
+                        <b>Total:</b> $<span id="total3">0</span>
+                    </p>
+
+                    <br>
+
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick" />
+                        <input type="hidden" name="hosted_button_id" value="TVWV8WSF3CBR2" />
+                        <input type="hidden" name="currency_code" value="USD" />
+                        <input type="image" src="https://www.paypalobjects.com/es_XC/MX/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" title="PayPal es una forma segura y fácil de pagar en línea." alt="Comprar ahora" />
+                    </form>
+                </div>
+            </div>         
         </div>
     </div>     
        
