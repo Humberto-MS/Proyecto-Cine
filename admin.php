@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -79,9 +81,9 @@
 
         //* Alta Cliente
         } else if (isset($_POST["alta-cliente"])) {
-            $sql = "INSERT INTO cliente (user,pass,nombre,apellido,correo,telefono)
+            $sql = "INSERT INTO cliente (user,pass,nombre,apellido,correo,telefono,rol)
                                         VALUES ('$user','$pass','$nombre','$apellido',
-                                                '$correo','$telefono')";
+                                                '$correo','$telefono','usuario')";
             if (mysqli_query($conn, $sql)) {
                 //echo "Cliente Insertado Exitosamente";
             } else {
@@ -113,6 +115,14 @@
             } else {
                 echo "Error Al Modificar Cliente: " . mysqli_error($conn);
             }
+
+        //* Cerrar Sesión
+        } else if (isset($_POST["cerrar-sesion"])) {
+            // Cierra sesión
+            session_destroy();
+            // Redirigir a la página de inicio
+            header('location: index.php');
+            exit;
         }
     }
 ?>
@@ -234,7 +244,7 @@
     
             <div class="input">
                 <h3> Apellidos </h3>
-                <input type="text" name="apellido" id="apellido" placeholder="apellido">
+                <input type="text" name="apellido" id="apellido" placeholder="Apellido">
             </div>
     
             <div class="input">
@@ -274,6 +284,13 @@
             </div>
         </form>
     </div>
+    
+    <div class="cerrar-sesión">
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+            <input type="submit" name="cerrar-sesion" value="Cerrar Sesión">
+        </form>
+    </div>
+    
 
     <script>
         // Evento de cambio para el combobox de películas

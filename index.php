@@ -42,6 +42,7 @@
                 </li>
 
                 <li> <a href="index.php"> Inicio </a> </li>
+                <li> <a href="login.php"> Log In </a> </li>
             </ul>
         </nav>
     </header>
