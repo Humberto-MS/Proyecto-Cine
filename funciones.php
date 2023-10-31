@@ -10,7 +10,7 @@
             $sql = "SELECT * FROM pelicula WHERE titulo_espanol = '$titulo';";         
 
             // Realizar la consulta
-            $consulta = mysqli_query ( $conexion, $sql );
+            $consulta = mysqli_query ( $conn, $sql );
 
             return $consulta;
 
@@ -31,7 +31,7 @@
             $sql = "SELECT * FROM pelicula;";         
 
             // Realizar la consulta
-            $consulta = mysqli_query ( $conexion, $sql );
+            $consulta = mysqli_query ( $conn, $sql );
 
             return $consulta;
 

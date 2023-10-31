@@ -1,11 +1,6 @@
 <?php
-    // Realiza la conexión a la base de datos
-    $conn = mysqli_connect("localhost", "root", "", "cine");
-
-    // Verifica la conexión
-    if (!$conn) {
-        die("Error de conexión: " . mysqli_connect_error());
-    }
+    // Importar las credenciales
+    require __DIR__ . '\database.php';
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $cliente_seleccionado = $_POST["user"];

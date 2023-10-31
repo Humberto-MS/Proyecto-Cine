@@ -1,17 +1,6 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "cine";
-
-    //? Conexión
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Verificar conexión
-    if ($conn->connect_error) {
-        die("Conexión Fallida: ". $conn->connect_error);
-    }    
-    //echo "Conexión Exitosa";
+    // Importar las credenciales
+    require __DIR__ . '\database.php';
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //? Declaración

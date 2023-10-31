@@ -1,19 +1,8 @@
 <?php
     session_start();
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "cine";
-
-    //? Conexión
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Verificar conexión
-    if ($conn->connect_error) {
-        die("Conexión Fallida: ". $conn->connect_error);
-    }    
-    //echo "Conexión Exitosa";
+    // Importar las credenciales
+    require __DIR__ . '\database.php';
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //? Declaración
@@ -37,12 +26,11 @@
 
         //* Alta Pelicula
         if (isset($_POST["alta-pelicula"])) {
-            $sql = "INSERT INTO pelicula (titulo_espanol,titulo_ingles,imagen,
-                                            sinopsis,clasificacion,genero,director,
-                                            reparto,trailer,asientos_disponibles) 
-                                            VALUES ('$titulo_espanol', '$titulo_ingles',
-                                            '$imagen','$sinopsis','$clasificacion','$genero',
-                                            '$director','$reparto','$trailer','$asientos_disponibles')";
+            $sql = "INSERT INTO pelicula (titulo_espanol,titulo_ingles,imagen,sinopsis,clasificacion,genero,director,reparto,
+                                         trailer,asientos_disponibles) 
+                    VALUES ('$titulo_espanol','$titulo_ingles','$imagen','$sinopsis','$clasificacion','$genero','$director',
+                            '$reparto','$trailer','$asientos_disponibles')";
+
             if (mysqli_query($conn, $sql)) {
                 //echo "Pelicula Insertada Exitosamente";
             } else {
@@ -62,16 +50,16 @@
         //* Modificar Pelicula
         } else if (isset($_POST["modificar-pelicula"])) {
             $sql = "UPDATE pelicula SET titulo_espanol = '$titulo_espanol',
-                                            titulo_ingles = '$titulo_ingles',
-                                            imagen = '$imagen',
-                                            sinopsis = '$sinopsis',
-                                            clasificacion = '$clasificacion',
-                                            genero = '$genero',
-                                            director = '$director',
-                                            reparto = '$reparto',
-                                            trailer = '$trailer',
-                                            asientos_disponibles = '$asientos_disponibles'
-                                            WHERE titulo_espanol = '$titulo_espanol'";
+                                        titulo_ingles = '$titulo_ingles',
+                                        imagen = '$imagen',
+                                        sinopsis = '$sinopsis',
+                                        clasificacion = '$clasificacion',
+                                        genero = '$genero',
+                                        director = '$director',
+                                        reparto = '$reparto',
+                                        trailer = '$trailer',
+                                        asientos_disponibles = '$asientos_disponibles'
+                                        WHERE titulo_espanol = '$titulo_espanol'";
             
             if (mysqli_query($conn, $sql)) {
                 //echo "Pelicula Modificada Exitosamente";
@@ -210,7 +198,8 @@
                     <option value="default_titulo"> Selecciona un Título </option>
                     <?php
                         if ($conn) {
-                            $sql_titulo = "SELECT titulo_espanol FROM pelicula";                                $titulos = mysqli_query($conn, $sql_titulo);
+                            $sql_titulo = "SELECT titulo_espanol FROM pelicula";                                
+                            $titulos = mysqli_query($conn, $sql_titulo);
                         
                             if ($titulos) {
                                 while ($opciones_titulo = mysqli_fetch_assoc($titulos)) {
