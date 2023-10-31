@@ -49,6 +49,8 @@
 
         //* Modificar Pelicula
         } else if (isset($_POST["modificar-pelicula"])) {
+            $titulo_original = $_POST["titulo_original"] ?? null;
+            
             $sql = "UPDATE pelicula SET titulo_espanol = '$titulo_espanol',
                                         titulo_ingles = '$titulo_ingles',
                                         imagen = '$imagen',
@@ -59,7 +61,7 @@
                                         reparto = '$reparto',
                                         trailer = '$trailer',
                                         asientos_disponibles = '$asientos_disponibles'
-                                        WHERE titulo_espanol = '$titulo_espanol'";
+                                        WHERE titulo_espanol = '$titulo_original'";
             
             if (mysqli_query($conn, $sql)) {
                 //echo "Pelicula Modificada Exitosamente";
@@ -90,13 +92,15 @@
 
         //* Modificar Cliente
         } else if (isset($_POST["modificar-cliente"])) {
+            $user_original = $_POST["user_original"] ?? null;
+
             $sql = "UPDATE cliente SET user = '$user',
                                         pass = '$pass',
                                         nombre = '$nombre',
                                         apellido = '$apellido',
                                         correo = '$correo',
                                         telefono = '$telefono'
-                                        WHERE user = '$user'";
+                                        WHERE user = '$user_original'";
 
             if (mysqli_query($conn, $sql)) {
                 //echo "Cliente Modificado Exitosamente";
@@ -138,6 +142,7 @@
             <div class="input">
                 <h3> Título en Español </h3>
                 <input type="text" name="titulo_espanol" id="titulo_espanol" placeholder="Titulo en Español">
+                <input type="hidden" name="titulo_original" id="titulo_original">
             </div>
             
             <div class="input">
@@ -219,6 +224,7 @@
             <div class="input">
                 <h3> Usuario </h3>
                 <input type="text" name="user" id="user" placeholder="Usuario">
+                <input type="hidden" name="user_original" id="user_original">
             </div>
     
             <div class="input">
@@ -296,6 +302,8 @@
                         const data = JSON.parse(xhr.responseText);
 
                         document.getElementById('titulo_espanol').value = data.titulo_espanol;
+                        // Guarda el título original de la película
+                        document.getElementById('titulo_original').value = data.titulo_espanol;
                         document.getElementById('titulo_ingles').value = data.titulo_ingles;
                         document.getElementById('imagen').value = data.imagen;
                         document.getElementById('sinopsis').value = data.sinopsis;
@@ -325,6 +333,8 @@
                         const data = JSON.parse(xhr.responseText);
 
                         document.getElementById('user').value = data.user;
+                        // Guarda el usuario original del cliente
+                        document.getElementById('user_original').value = data.user;
                         document.getElementById('pass').value = data.pass;
                         document.getElementById('nombre').value = data.nombre;
                         document.getElementById('apellido').value = data.apellido;
@@ -341,6 +351,7 @@
             $('#limpiar-pelicula').on('click', function() {
                 // Restablece el contenido de los campos de entrada
                 $('#titulo_espanol').val('');
+                $('#titulo_original').val('');
                 $('#titulo_ingles').val('');
                 $('#imagen').val('');
                 $('#sinopsis').val('');
@@ -356,6 +367,7 @@
             $('#limpiar-cliente').on('click', function() {
                 // Restablece el contenido de los campos de entrada
                 $('#user').val('');
+                $('#user_original').val('');
                 $('#pass').val('');
                 $('#nombre').val('');
                 $('#apellido').val('');
