@@ -156,22 +156,6 @@ nav {
     opacity: 1;
 }
 
-@media (min-width: 460px) {
-    .overlay-texto h2 {
-        font-size: 3rem;
-        margin-bottom: 0;
-    }
-
-    .overlay-texto h3 {
-        font-size: 1.5rem;
-        opacity: 0.6;
-    }
-
-    .overlay-texto p {
-        font-size: 0.75rem;
-    }
-}
-
 .overlay-texto {
     color: white;
     position: absolute;
@@ -179,21 +163,38 @@ nav {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    height: 150px;
     width: 75%;
 }
 
 .overlay-texto h2 {
-    font-size: 3rem;
+    font-size: 2rem;
     margin-bottom: 0;
 }
 
 .overlay-texto h3 {
-    font-size: 1.5rem;
+    font-size: 1rem;
     opacity: 0.6;
 }
 
 .overlay-texto p {
-    font-size: 1.5rem;
+    font-size: 0.5rem;
+}
+
+@media (min-width: 460px) {
+    .overlay-texto h2 {
+        font-size: 3rem;
+        margin-bottom: 0;
+    }
+
+    .overlay-texto h3 {
+        font-size: 2rem;
+        opacity: 0.6;
+    }
+
+    .overlay-texto p {
+        font-size: 1.5rem;
+    }
 }
 
 /**************************************** Cartelera **********************************/
@@ -521,32 +522,17 @@ footer p {
     align-items: end;
 }
 
-@media (min-width: 460px) {
-    .contenido-footer {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 3rem 6rem;
-    }
-
-    .elemento-footer:nth-child(1),
-    .elemento-footer:nth-child(2) {
-        box-sizing: border-box;
-        border-right: 2px solid #e5e7eb;
-        border-bottom: 0;
-        padding-right: 5rem;
-    }
-}
-
 .contenido-footer {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem 3rem;
 }
 
 .elemento-footer:nth-child(1),
 .elemento-footer:nth-child(2) {
     box-sizing: border-box;
-    border-right: 2px solid #e5e7eb;
-    padding-right: 5rem;
+    border-bottom: 2px solid #e5e7eb;
 }
 
 .imagenes-footer {
@@ -579,6 +565,23 @@ footer p {
     row-gap: 4rem;
     justify-content: center;
     align-items: center;
+}
+
+@media (min-width: 460px) {
+    .contenido-footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 3rem 6rem;
+    }
+
+    .elemento-footer:nth-child(1),
+    .elemento-footer:nth-child(2) {
+        box-sizing: border-box;
+        border-right: 2px solid #e5e7eb;
+        border-bottom: 0;
+        padding-right: 5rem;
+    }
 }
 
 /**************************************** Modales **********************************/
