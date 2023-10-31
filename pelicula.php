@@ -42,6 +42,7 @@
                 </li>
 
                 <li> <a href="index.php"> Inicio </a> </li>
+                <li> <a href="login.php"> Log In </a> </li>
             </ul>
         </nav>
     </header>
@@ -344,7 +345,7 @@
 
                     <br>
 
-                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                         <input type="hidden" name="cmd" value="_s-xclick" />
                         <input type="hidden" name="hosted_button_id" value="TVWV8WSF3CBR2" />
                         <input type="hidden" name="currency_code" value="USD" />
