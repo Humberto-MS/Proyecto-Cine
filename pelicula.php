@@ -315,17 +315,7 @@
                         <input type="text" placeholder="Apellidos">
                         <input type="email" placeholder="Correo">
                         <input type="number" placeholder="Teléfono">
-                    </div>                
-
-                    <div class="contendor-botones-pago">
-                        <div class="boton-modal">
-                                <button id="regresar-pago">Regresar</button>
-                            </div>
-
-                        <div class="boton-modal">
-                            <button id="finalizar-pago">Finalizar</button>
-                        </div>
-                    </div>   
+                    </div>      
                 </div>
 
                 <div class="realizar-pago">
@@ -343,14 +333,28 @@
                         <b>Total:</b> $<span id="total3">0</span>
                     </p>
 
-                    <br>
-
-                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                    <form class="boton-paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                         <input type="hidden" name="cmd" value="_s-xclick" />
-                        <input type="hidden" name="hosted_button_id" value="TVWV8WSF3CBR2" />
-                        <input type="hidden" name="currency_code" value="USD" />
-                        <input type="image" src="https://www.paypalobjects.com/es_XC/MX/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" title="PayPal es una forma segura y fácil de pagar en línea." alt="Comprar ahora" />
+                        <input type="hidden" name="hosted_button_id" value="8XHX7Y36UEVWJ" />
+                        <input type="hidden" name="currency_code" value="MXN" />
+                        <input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_paynow_SM.gif" border="0" name="submit" title="PayPal es una forma segura y fácil de pagar en línea." alt="Comprar ahora" />
                     </form>
+
+                    <div class="contenedor-botones-pago">
+                        <div class="boton-modal">
+                            <button id="regresar-pago">Regresar</button>
+                        </div>
+
+                        <form action="recibo.html" method="post" target="_blank">
+                            <div class="boton-modal">
+                                <button id="imprimir-pago">Recibo</button>
+                            </div>
+                        </form>                       
+
+                        <div class="boton-modal">
+                            <button id="finalizar-pago">Finalizar</button>
+                        </div>
+                    </div>   
                 </div>
             </div>         
         </div>
