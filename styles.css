@@ -917,9 +917,14 @@ footer p {
 
 .contenedor-botones-pago {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-top: 2rem;
+}
+
+.contenedor-botones-pago #finalizar-pago {
+    display: none;
+    margin-left: 1rem;
 }
 
 .realizar-pago h2, .datos-personales h2 { text-align: center; }
