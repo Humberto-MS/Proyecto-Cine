@@ -384,7 +384,7 @@
                             <input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_paynow_SM.gif" border="0" name="submit" title="PayPal es una forma segura y fácil de pagar en línea." alt="Comprar ahora" />
                         </form>
 
-                        <button class="confirmar-pago" id="confirmar-pago">Pago Realizado</button>
+                        <button class="confirmar-pago" name="confirmar-pago" id="confirmar-pago">Pago Realizado</button>
                     </div>                    
 
                     <div class="contenedor-botones-pago">
