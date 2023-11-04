@@ -922,7 +922,7 @@ footer p {
 
 .realizar-pago h2, .datos-personales h2 { text-align: center; }
 
-.realizar-pago .boton-paypal {
+.realizar-pago #boton-paypal {
     display: flex;
     justify-content: center;
     margin-top: 2rem;
@@ -931,6 +931,10 @@ footer p {
 
 .realizar-pago .texto {
     text-align: left;
+}
+
+#boton-recibo {
+    display: none;
 }
 
 @media ( min-width: 460px ) {

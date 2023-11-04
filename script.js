@@ -12,7 +12,8 @@ const finalizarPago = document.getElementById ( "finalizar-pago" );
 const regresar_asientos = document.getElementById ( "regresar-asientos" );
 const regresar_pago = document.getElementById ( "regresar-pago" );
 
-const imprimir_recibo = document.getElementById ( "imprimir-pago" );
+const boton_recibo = document.getElementById ( "boton-recibo" );
+const boton_paypal = document.getElementById ( "boton-paypal" );
 
 const masBoletoAdulto = document.getElementById ( "boleto-adulto-mas" );
 const menosBoletoAdulto = document.getElementById ( "boleto-adulto-menos" );
@@ -60,6 +61,8 @@ cerrarModal.forEach ( function ( boton ) {
         total.innerText = precioTotal;
         total2.innerText = precioTotal;
         total3.innerText = precioTotal;
+        boton_paypal.style.display = "flex";
+        boton_recibo.style.display = "none";
 
         if ( modalBoletos.classList.contains ("mostrar-modal") ) {
             modalBoletos.classList.remove ( "mostrar-modal" );
@@ -97,6 +100,8 @@ continuarAsientos.addEventListener ( "click", () => {
 
 finalizarPago.addEventListener ( "click", () => {
     modalPago.classList.remove ( "mostrar-modal" );
+    boton_paypal.style.display = "flex";
+    boton_recibo.style.display = "none";
 
     precioTotal = cantBoletosAdulto = cantBoletosNiño = cantBoletosTEdad = cantBoletosTotal = 0;
     boletosAdulto.innerText = cantBoletosAdulto;
@@ -115,8 +120,9 @@ regresar_pago.addEventListener ( "click", () => {
     modalAsientos.classList.add ( "mostrar-modal" );
 } );
 
-imprimir_recibo.addEventListener ( "click", () => {
-    
+boton_paypal.addEventListener ( "click", () => {
+    boton_paypal.style.display = "none";
+    boton_recibo.style.display = "block";
 } );
 
 masBoletoAdulto.addEventListener ( "click", () => {
