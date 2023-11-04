@@ -333,7 +333,7 @@
                         <b>Total:</b> $<span id="total3">0</span>
                     </p>
 
-                    <form class="boton-paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                    <form id="boton-paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                         <input type="hidden" name="cmd" value="_s-xclick" />
                         <input type="hidden" name="hosted_button_id" value="8XHX7Y36UEVWJ" />
                         <input type="hidden" name="currency_code" value="MXN" />
@@ -345,7 +345,7 @@
                             <button id="regresar-pago">Regresar</button>
                         </div>
 
-                        <form action="recibo.html" method="post" target="_blank">
+                        <form id="boton-recibo" action="recibo.html" target="_blank">
                             <div class="boton-modal">
                                 <button id="imprimir-pago">Recibo</button>
                             </div>
