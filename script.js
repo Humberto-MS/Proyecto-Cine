@@ -12,6 +12,8 @@ const finalizarPago = document.getElementById ( "finalizar-pago" );
 const regresar_asientos = document.getElementById ( "regresar-asientos" );
 const regresar_pago = document.getElementById ( "regresar-pago" );
 
+const imprimir_recibo = document.getElementById ( "imprimir-pago" );
+
 const masBoletoAdulto = document.getElementById ( "boleto-adulto-mas" );
 const menosBoletoAdulto = document.getElementById ( "boleto-adulto-menos" );
 
@@ -111,6 +113,10 @@ regresar_asientos.addEventListener ( "click", () => {
 regresar_pago.addEventListener ( "click", () => {
     modalPago.classList.remove ( "mostrar-modal" );
     modalAsientos.classList.add ( "mostrar-modal" );
+} );
+
+imprimir_recibo.addEventListener ( "click", () => {
+    
 } );
 
 masBoletoAdulto.addEventListener ( "click", () => {
