@@ -63,8 +63,10 @@ cerrarModal.forEach ( function ( boton ) {
         total2.innerText = precioTotal;
         total3.innerText = precioTotal;
         boton_paypal.style.display = "flex";
+        regresar_pago.style.display = "flex";
         boton_confirmar.style.display = "none";
         boton_recibo.style.display = "none";
+        finalizarPago.style.display = "none";
 
         if ( modalBoletos.classList.contains ("mostrar-modal") ) {
             modalBoletos.classList.remove ( "mostrar-modal" );
@@ -103,8 +105,10 @@ continuarAsientos.addEventListener ( "click", () => {
 finalizarPago.addEventListener ( "click", () => {
     modalPago.classList.remove ( "mostrar-modal" );
     boton_paypal.style.display = "flex";
+    regresar_pago.style.display = "flex";
     boton_confirmar.style.display = "none";
     boton_recibo.style.display = "none";
+    finalizarPago.style.display = "none";
 
     precioTotal = cantBoletosAdulto = cantBoletosNiño = cantBoletosTEdad = cantBoletosTotal = 0;
     boletosAdulto.innerText = cantBoletosAdulto;
@@ -130,7 +134,9 @@ boton_paypal.addEventListener ( "click", () => {
 
 boton_confirmar.addEventListener ( "click", () => {
     boton_confirmar.style.display = "none";
+    regresar_pago.style.display = "none";
     boton_recibo.style.display = "block";
+    finalizarPago.style.display = "block";    
 } );
 
 masBoletoAdulto.addEventListener ( "click", () => {
