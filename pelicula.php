@@ -1,6 +1,41 @@
 <?php
     require __DIR__ . '\funciones.php';
     $pelicula = obtener_pelicula_con_variable();
+
+    // Importar las credenciales
+    require __DIR__ . '\database.php';
+
+    session_start();
+
+    // Sesión iniciada
+    if (isset($_SESSION['user'])) {
+        $usuarioExistente = true;
+
+        $user = $_SESSION['user'];
+
+        $sql = "SELECT nombre, apellido, correo, telefono FROM cliente WHERE user = '$user'";
+
+        $result = $conn->query($sql);
+
+        if ($result->num_rows == 1) {
+            $fila = $result->fetch_assoc();
+
+            // Guarda los datos del usuario en variables
+            $nombre = $fila['nombre'];
+            $apellido = $fila['apellido'];
+            $correo = $fila['correo'];
+            $telefono = $fila['telefono'];
+        }
+    } else {
+        $usuarioExistente = false;
+    }
+
+    // Recupera los datos del cliente y los ingresa a la tabla Compra
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($usuarioExistente) {
+            $sql = "INSERT INTO compra ()";
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -36,13 +71,21 @@
                     <a href="#"> Más &#x25BE; </a>
                     
                     <div class="dropdown-content">
-                        <a href="contacto.html"> Contacto </a>
-                        <a href="sobre-nosotros.html"> Sobre Nosotros </a>
+                        <a href="contacto.php"> Contacto </a>
+                        <a href="sobre-nosotros.php"> Sobre Nosotros </a>
                     </div>
                 </li>
 
                 <li> <a href="index.php"> Inicio </a> </li>
-                <li> <a href="login.php"> Log In </a> </li>
+                <?php
+                    if (isset($_SESSION['user'])) {
+                        // Si el usuario tiene una sesión iniciada, mostrar "Log Out"
+                        echo '<li> <a href="logout.php"> Log Out </a> </li>';
+                    } else {
+                        // Si el usuario no tiene una sesión iniciada, mostrar "Log In"
+                        echo '<li> <a href="login.php"> Log In </a> </li>';
+                    }
+                ?>
             </ul>
         </nav>
     </header>
@@ -311,10 +354,10 @@
                     <h2> Información Personal </h2>
 
                     <div class="inputs-modal-pago">
-                        <input type="text" placeholder="Nombre">
-                        <input type="text" placeholder="Apellidos">
-                        <input type="email" placeholder="Correo">
-                        <input type="number" placeholder="Teléfono">
+                        <input type="text" id="nombre" placeholder="Nombre">
+                        <input type="text" id="apellido" placeholder="Apellidos">
+                        <input type="email" id="correo" placeholder="Correo">
+                        <input type="tel" id="telefono" placeholder="Teléfono">
                     </div>      
                 </div>
 
@@ -410,5 +453,24 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <script>
+        // Identifica si el usuario inició sesión
+        var usuarioExistente = <?php echo $usuarioExistente ? 'true' : 'false'; ?>;
+
+        if (usuarioExistente) {
+            // Obtener los datos del usuario de las variables PHP
+            var nombre = "<?php echo $nombre; ?>";
+            var apellido = "<?php echo $apellido; ?>";
+            var correo = "<?php echo $correo; ?>";
+            var telefono = "<?php echo $telefono; ?>";
+
+            // Completar los campos del formulario con los datos del usuario
+            document.getElementById('nombre').value = nombre;
+            document.getElementById('apellido').value = apellido;
+            document.getElementById('correo').value = correo;
+            document.getElementById('telefono').value = telefono;
+        }
+    </script>
 </body>
 </html>
