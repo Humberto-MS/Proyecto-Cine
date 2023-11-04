@@ -4,6 +4,7 @@
     --gris: #2C282F;
     --gris-oscuro: #1D1B20;
     --gris-claro: #d9dde0;
+    --amarillo: #FFC300;
 }
 
 body {
@@ -918,6 +919,7 @@ footer p {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 2rem;
 }
 
 .realizar-pago h2, .datos-personales h2 { text-align: center; }
@@ -926,15 +928,37 @@ footer p {
     display: flex;
     justify-content: center;
     margin-top: 2rem;
-    margin-bottom: 2rem;
 }
 
 .realizar-pago .texto {
     text-align: left;
 }
 
+.realizar-pago .texto:nth-child(4) {
+    margin-bottom: 0;
+}
+
 #boton-recibo {
     display: none;
+}
+
+.botones-pago {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.confirmar-pago {
+    display: none;
+    border: none;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 10px 20px;
+    margin-top: 2rem;
+    background-color: var(--amarillo);
+    color: black;  
+    cursor: pointer;  
 }
 
 @media ( min-width: 460px ) {
