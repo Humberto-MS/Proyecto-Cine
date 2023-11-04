@@ -376,12 +376,16 @@
                         <b>Total:</b> $<span id="total3">0</span>
                     </p>
 
-                    <form id="boton-paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-                        <input type="hidden" name="cmd" value="_s-xclick" />
-                        <input type="hidden" name="hosted_button_id" value="8XHX7Y36UEVWJ" />
-                        <input type="hidden" name="currency_code" value="MXN" />
-                        <input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_paynow_SM.gif" border="0" name="submit" title="PayPal es una forma segura y fácil de pagar en línea." alt="Comprar ahora" />
-                    </form>
+                    <div class="botones-pago">
+                        <form id="boton-paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                            <input type="hidden" name="cmd" value="_s-xclick" />
+                            <input type="hidden" name="hosted_button_id" value="8XHX7Y36UEVWJ" />
+                            <input type="hidden" name="currency_code" value="MXN" />
+                            <input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_paynow_SM.gif" border="0" name="submit" title="PayPal es una forma segura y fácil de pagar en línea." alt="Comprar ahora" />
+                        </form>
+
+                        <button class="confirmar-pago" id="confirmar-pago">Pago Realizado</button>
+                    </div>                    
 
                     <div class="contenedor-botones-pago">
                         <div class="boton-modal">
