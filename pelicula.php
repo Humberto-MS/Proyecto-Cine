@@ -340,72 +340,10 @@
 
                 <div class="boton-modal">
                     <button id="continuar-asientos">Continuar</button>
-                </div>
+                </div>              
             </div>            
         </div>
     </div>
-
-    <div id="modal-pago" class="modal-pago">
-        <div class="contenido-modal-pago">
-            <span class="cerrar">&times;</span>
-
-            <div class="contenido-pago">
-                <div class="datos-personales">
-                    <h2> Información Personal </h2>
-
-                    <div class="inputs-modal-pago">
-                        <input type="text" id="nombre" placeholder="Nombre">
-                        <input type="text" id="apellido" placeholder="Apellidos">
-                        <input type="email" id="correo" placeholder="Correo">
-                        <input type="tel" id="telefono" placeholder="Teléfono">
-                    </div>      
-                </div>
-
-                <div class="realizar-pago">
-                    <h2> Total a Pagar </h2>
-
-                    <p class="texto">
-                        <b>Cantidad de boletos:</b> <span id="cantidad-boletos-pago">0</span> boleto(s)
-                    </p>
-
-                    <p class="texto">
-                        <b>Boleto(s):</b> <span id="numeros-boletos">0</span>
-                    </p>
-
-                    <p class="texto">
-                        <b>Total:</b> $<span id="total3">0</span>
-                    </p>
-
-                    <div class="botones-pago">
-                        <form id="boton-paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-                            <input type="hidden" name="cmd" value="_s-xclick" />
-                            <input type="hidden" name="hosted_button_id" value="8XHX7Y36UEVWJ" />
-                            <input type="hidden" name="currency_code" value="MXN" />
-                            <input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_paynow_SM.gif" border="0" name="submit" title="PayPal es una forma segura y fácil de pagar en línea." alt="Comprar ahora" />
-                        </form>
-
-                        <button class="confirmar-pago" name="confirmar-pago" id="confirmar-pago">Pago Realizado</button>
-                    </div>                    
-
-                    <div class="contenedor-botones-pago">
-                        <div class="boton-modal">
-                            <button id="regresar-pago">Regresar</button>
-                        </div>
-
-                        <form id="boton-recibo" action="recibo.html" target="_blank">
-                            <div class="boton-modal">
-                                <button id="imprimir-pago">Recibo</button>
-                            </div>
-                        </form>                       
-
-                        <div class="boton-modal">
-                            <button id="finalizar-pago">Finalizar</button>
-                        </div>
-                    </div>   
-                </div>
-            </div>         
-        </div>
-    </div>     
        
     <hr>
 
