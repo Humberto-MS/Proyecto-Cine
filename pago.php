@@ -157,7 +157,7 @@
         
     </footer>
     
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
     <script src="https://www.paypal.com/sdk/js?client-id=AYqbtbFUBHWJE13vnIhXF0bXyCu27rauEsdg6SRUncEf960VJx0yniZ-IZCCSAIG1GCNhacyJxegmUgR&currency=USD"></script>
     <script src="app.js"></script>
 
@@ -166,7 +166,7 @@
         const finalizarPago = document.getElementById ( "finalizar-pago" );
 
         const boton_recibo = document.getElementById ( "boton-recibo" );
-        const boton_paypal = document.getElementById ( "boton-paypal" );
+        // const boton_paypal = document.getElementById ( "boton-paypal" );
         const boton_confirmar = document.getElementById ( "confirmar-pago" );
 
         const total3 = document.getElementById ( "total3" );
@@ -175,16 +175,16 @@
         const numeros_boletos = document.getElementById ( "numeros-boletos" );
 
         finalizarPago.addEventListener ( "click", () => {
-            boton_paypal.style.display = "flex";
+            // boton_paypal.style.display = "flex";
             boton_confirmar.style.display = "none";
             boton_recibo.style.display = "none";
             finalizarPago.style.display = "none";
         } );
 
-        boton_paypal.addEventListener ( "click", () => {
-            boton_paypal.style.display = "none";
-            boton_confirmar.style.display = "block";
-        } );
+        // boton_paypal.addEventListener ( "click", () => {
+        //     boton_paypal.style.display = "none";
+        //     boton_confirmar.style.display = "block";
+        // } );
 
         boton_confirmar.addEventListener ( "click", () => {
             boton_confirmar.style.display = "none";
@@ -196,21 +196,14 @@
     <!-- Script PHP -->
     <script>
         // Identifica si el usuario inició sesión
-        var usuarioExistente = <?php echo $usuarioExistente ? 'true' : 'false'; ?>;
-
-        if (usuarioExistente) {
-            // Obtener los datos del usuario de las variables PHP
-            var nombre = "<?php echo $nombre; ?>";
-            var apellido = "<?php echo $apellido; ?>";
-            var correo = "<?php echo $correo; ?>";
-            var telefono = "<?php echo $telefono; ?>";
-
-            // Completar los campos del formulario con los datos del usuario
-            document.getElementById('nombre').value = nombre;
-            document.getElementById('apellido').value = apellido;
-            document.getElementById('correo').value = correo;
-            document.getElementById('telefono').value = telefono;
-        }
+        <?php
+            if ($usuarioExistente) { ?>
+                // Completar los campos del formulario con los datos del usuario
+                document.getElementById('nombre').value = <?php echo $nombre; ?>;
+                document.getElementById('apellido').value = <?php echo $apellido; ?>;
+                document.getElementById('correo').value = <?php echo $correo; ?>;
+                document.getElementById('telefono').value = <?php echo $telefono; ?>;
+        <?php } ?>
 
         document.addEventListener("DOMContentLoaded", function() {
             // Recupera los datos desde localStorage
@@ -219,9 +212,9 @@
             var precioTotal = localStorage.getItem('precioTotal');
 
             // Actualiza los elementos span con los datos recuperados
-            document.getElementById('cantidad-boletos-pago').textContent = cantBoletosTotal;
-            document.getElementById('numeros-boletos').textContent = asientos_select;
-            document.getElementById('total3').textContent = precioTotal;
+            document.getElementById('cantidad-boletos-pago').innerText = cantBoletosTotal;
+            document.getElementById('numeros-boletos').innerText = asientos_select;
+            document.getElementById('total3').innerText = precioTotal;
         });
     </script>
 
