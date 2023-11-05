@@ -3,18 +3,11 @@ const cerrarModal = document.querySelectorAll ( ".cerrar" );
 
 const modalBoletos = document.getElementById ( "modal-boletos" );
 const modalAsientos = document.getElementById ( "modal-asientos" );
-const modalPago = document.getElementById ( "modal-pago" );
 
 const continuarBoletos = document.getElementById ( "continuar-boletos" );
 const continuarAsientos = document.getElementById ( "continuar-asientos" );
-const finalizarPago = document.getElementById ( "finalizar-pago" );
 
 const regresar_asientos = document.getElementById ( "regresar-asientos" );
-const regresar_pago = document.getElementById ( "regresar-pago" );
-
-const boton_recibo = document.getElementById ( "boton-recibo" );
-const boton_paypal = document.getElementById ( "boton-paypal" );
-const boton_confirmar = document.getElementById ( "confirmar-pago" );
 
 const masBoletoAdulto = document.getElementById ( "boleto-adulto-mas" );
 const menosBoletoAdulto = document.getElementById ( "boleto-adulto-menos" );
@@ -27,20 +20,16 @@ const menosBoletoTEdad = document.getElementById ( "boleto-tEdad-menos" );
 
 const total = document.getElementById ( "total" );
 const total2 = document.getElementById ( "total2" );
-const total3 = document.getElementById ( "total3" );
 
 const boletosAdulto = document.getElementById ( "cantidad-boletos-adulto" );
 const boletosNiño = document.getElementById ( "cantidad-boletos-niño" );
 const boletosTEdad = document.getElementById ( "cantidad-boletos-tEdad" );
 
 const boletosTotales = document.getElementById ( "cantidad-boletos" );
-const boletosTotales_pago = document.getElementById ( "cantidad-boletos-pago" );
-
-const numeros_boletos = document.getElementById ( "numeros-boletos" );
 
 const asientos = document.querySelectorAll ( ".fila .asiento" );
-let asientos_select = [];
 
+let asientos_select = [];
 let precioTotal = 0;
 let cantBoletosAdulto = 0;
 let cantBoletosNiño = 0;
@@ -61,12 +50,6 @@ cerrarModal.forEach ( function ( boton ) {
         boletosTEdad.innerText = cantBoletosTEdad;
         total.innerText = precioTotal;
         total2.innerText = precioTotal;
-        total3.innerText = precioTotal;
-        boton_paypal.style.display = "flex";
-        regresar_pago.style.display = "flex";
-        boton_confirmar.style.display = "none";
-        boton_recibo.style.display = "none";
-        finalizarPago.style.display = "none";
 
         if ( modalBoletos.classList.contains ("mostrar-modal") ) {
             modalBoletos.classList.remove ( "mostrar-modal" );
@@ -75,68 +58,7 @@ cerrarModal.forEach ( function ( boton ) {
         if ( modalAsientos.classList.contains ("mostrar-modal") ) {
             modalAsientos.classList.remove ( "mostrar-modal" );
         }
-    
-        if ( modalPago.classList.contains ("mostrar-modal") ) {
-            modalPago.classList.remove ( "mostrar-modal" );
-        }
     } );
-} );
-
-continuarBoletos.addEventListener ( "click", () => {
-    if ( cantBoletosTotal != 0 ) {
-        modalBoletos.classList.remove ( "mostrar-modal" );
-        modalAsientos.classList.add ( "mostrar-modal" );
-        boletosTotales.innerText = cantBoletosTotal;
-        total2.innerText = precioTotal;
-    }    
-} );
-
-continuarAsientos.addEventListener ( "click", () => {
-    if ( asientos_select.length != 0 && asientos_select.length == cantBoletosTotal ) {
-        modalAsientos.classList.remove ( "mostrar-modal" );
-        modalPago.classList.add ( "mostrar-modal" );
-        asientos_select.sort();
-        boletosTotales_pago.innerText = cantBoletosTotal;
-        numeros_boletos.innerText = asientos_select;
-        total3.innerText = precioTotal;
-    }    
-} );
-
-finalizarPago.addEventListener ( "click", () => {
-    modalPago.classList.remove ( "mostrar-modal" );
-    boton_paypal.style.display = "flex";
-    regresar_pago.style.display = "flex";
-    boton_confirmar.style.display = "none";
-    boton_recibo.style.display = "none";
-    finalizarPago.style.display = "none";
-
-    precioTotal = cantBoletosAdulto = cantBoletosNiño = cantBoletosTEdad = cantBoletosTotal = 0;
-    boletosAdulto.innerText = cantBoletosAdulto;
-    boletosNiño.innerText = cantBoletosNiño;
-    boletosTEdad.innerText = cantBoletosTEdad;
-    total.innerText = precioTotal;  
-} );
-
-regresar_asientos.addEventListener ( "click", () => {
-    modalAsientos.classList.remove ( "mostrar-modal" );
-    modalBoletos.classList.add ( "mostrar-modal" );
-} );
-
-regresar_pago.addEventListener ( "click", () => {
-    modalPago.classList.remove ( "mostrar-modal" );
-    modalAsientos.classList.add ( "mostrar-modal" );
-} );
-
-boton_paypal.addEventListener ( "click", () => {
-    boton_paypal.style.display = "none";
-    boton_confirmar.style.display = "block";
-} );
-
-boton_confirmar.addEventListener ( "click", () => {
-    boton_confirmar.style.display = "none";
-    regresar_pago.style.display = "none";
-    boton_recibo.style.display = "block";
-    finalizarPago.style.display = "block";    
 } );
 
 masBoletoAdulto.addEventListener ( "click", () => {
@@ -199,6 +121,15 @@ menosBoletoTEdad.addEventListener ( "click", () => {
     }  
 } );
 
+continuarBoletos.addEventListener ( "click", () => {
+    if ( cantBoletosTotal != 0 ) {
+        modalBoletos.classList.remove ( "mostrar-modal" );
+        modalAsientos.classList.add ( "mostrar-modal" );
+        boletosTotales.innerText = cantBoletosTotal;
+        total2.innerText = precioTotal;
+    }    
+} );
+
 asientos.forEach ( asiento => {
     asiento.addEventListener ( "click", () => {
         if ( !asiento.classList.contains ( "seleccionado" ) 
@@ -214,3 +145,19 @@ asientos.forEach ( asiento => {
         }   
     } );
 } );
+
+const url = 'pago.php?cant_boletos=' + cantBoletosTotal + '&asientos=' + asientos_select + '&total=' + precioTotal;
+
+continuarAsientos.addEventListener ( "click", () => {
+    if ( asientos_select.length != 0 && asientos_select.length == cantBoletosTotal ) {        
+        modalAsientos.classList.remove ( "mostrar-modal" );
+        asientos_select.sort();
+        window.location.href = url;
+    }    
+} );
+
+regresar_asientos.addEventListener ( "click", () => {
+    modalAsientos.classList.remove ( "mostrar-modal" );
+    modalBoletos.classList.add ( "mostrar-modal" );
+} );
+
