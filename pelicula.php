@@ -2,40 +2,7 @@
     require __DIR__ . '\funciones.php';
     $pelicula = obtener_pelicula_con_variable();
 
-    // Importar las credenciales
-    require __DIR__ . '\database.php';
-
     session_start();
-
-    // Sesión iniciada
-    if (isset($_SESSION['user'])) {
-        $usuarioExistente = true;
-
-        $user = $_SESSION['user'];
-
-        $sql = "SELECT nombre, apellido, correo, telefono FROM cliente WHERE user = '$user'";
-
-        $result = $conn->query($sql);
-
-        if ($result->num_rows == 1) {
-            $fila = $result->fetch_assoc();
-
-            // Guarda los datos del usuario en variables
-            $nombre = $fila['nombre'];
-            $apellido = $fila['apellido'];
-            $correo = $fila['correo'];
-            $telefono = $fila['telefono'];
-        }
-    } else {
-        $usuarioExistente = false;
-    }
-
-    // Recupera los datos del cliente y los ingresa a la tabla Compra
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if ($usuarioExistente) {
-            $sql = "INSERT INTO compra ()";
-        }
-    }
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     
     <link href="styles.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     
 </head>
 <body>
@@ -396,23 +364,5 @@
 
     <script src="script.js"></script>
 
-    <script>
-        // Identifica si el usuario inició sesión
-        var usuarioExistente = <?php echo $usuarioExistente ? 'true' : 'false'; ?>;
-
-        if (usuarioExistente) {
-            // Obtener los datos del usuario de las variables PHP
-            var nombre = "<?php echo $nombre; ?>";
-            var apellido = "<?php echo $apellido; ?>";
-            var correo = "<?php echo $correo; ?>";
-            var telefono = "<?php echo $telefono; ?>";
-
-            // Completar los campos del formulario con los datos del usuario
-            document.getElementById('nombre').value = nombre;
-            document.getElementById('apellido').value = apellido;
-            document.getElementById('correo').value = correo;
-            document.getElementById('telefono').value = telefono;
-        }
-    </script>
 </body>
 </html>

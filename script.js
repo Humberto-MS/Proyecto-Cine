@@ -152,7 +152,14 @@ continuarAsientos.addEventListener ( "click", () => {
     if ( asientos_select.length != 0 && asientos_select.length == cantBoletosTotal ) {        
         modalAsientos.classList.remove ( "mostrar-modal" );
         asientos_select.sort();
-        window.location.href = url;
+        // window.location.href = url;
+
+        // Almacena los datos en localStorage
+        localStorage.setItem('cantBoletosTotal', cantBoletosTotal);
+        localStorage.setItem('asientos_select', asientos_select);
+        localStorage.setItem('precioTotal', precioTotal);
+
+        window.location.href = 'pago.php';
     }    
 } );
 

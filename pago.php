@@ -1,3 +1,40 @@
+<?php
+    // Importar las credenciales
+    require __DIR__ . '\database.php';
+
+    session_start();
+
+    // Sesión iniciada
+    if (isset($_SESSION['user'])) {
+        $usuarioExistente = true;
+
+        $user = $_SESSION['user'];
+
+        $sql = "SELECT nombre, apellido, correo, telefono FROM cliente WHERE user = '$user'";
+
+        $result = $conn->query($sql);
+
+        if ($result->num_rows == 1) {
+            $fila = $result->fetch_assoc();
+
+            // Guarda los datos del usuario en variables
+            $nombre = $fila['nombre'];
+            $apellido = $fila['apellido'];
+            $correo = $fila['correo'];
+            $telefono = $fila['telefono'];
+        }
+    } else {
+        $usuarioExistente = false;
+    }
+
+    // Recupera los datos del cliente y los ingresa a la tabla Compra
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($usuarioExistente) {
+            $sql = "INSERT INTO compra ()";
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,24 +70,26 @@
             <h2> Total a Pagar </h2>
     
             <p class="texto">
-                <b>Cantidad de boletos:</b> <span id="cantidad-boletos-pago"> <?php echo $_GET [ 'cant_boletos' ] ?> </span> boleto(s)
+                <b>Cantidad de boletos:</b> <span id="cantidad-boletos-pago"> 0 </span> boleto(s)
             </p>
     
             <p class="texto">
-                <b>Boleto(s):</b> <span id="numeros-boletos"> <?php echo $_GET [ 'asientos' ] ?> </span>
+                <b>Boleto(s):</b> <span id="numeros-boletos"> 0 </span>
             </p>
     
             <p class="texto">
-                <b>Total:</b> $<span id="total3"> <?php echo $_GET [ 'total' ] ?> </span>
+                <b>Total:</b> $<span id="total3"> 0 </span>
             </p>
     
             <div class="botones-pago">
-                <form id="boton-paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                <div id="paypal-button-container"></div>
+                <p id="result-message"></p>
+                <!-- <form id="boton-paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                     <input type="hidden" name="cmd" value="_s-xclick" />
                     <input type="hidden" name="hosted_button_id" value="8XHX7Y36UEVWJ" />
                     <input type="hidden" name="currency_code" value="MXN" />
                     <input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_paynow_SM.gif" border="0" name="submit" title="PayPal es una forma segura y fácil de pagar en línea." alt="Comprar ahora" />
-                </form>
+                </form> -->
     
                 <button class="confirmar-pago" name="confirmar-pago" id="confirmar-pago">Pago Realizado</button>
             </div>                    
@@ -117,7 +156,12 @@
         <p class="copyright"> ©Copyright 2023. Todos los derechos reservados a MelvinPolis® | Aviso de privacidad | Términos y condiciones </p>
         
     </footer>
+    
+    <script src="script.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AYqbtbFUBHWJE13vnIhXF0bXyCu27rauEsdg6SRUncEf960VJx0yniZ-IZCCSAIG1GCNhacyJxegmUgR&currency=USD"></script>
+    <script src="app.js"></script>
 
+    <!-- Script Botones -->
     <script>
         const finalizarPago = document.getElementById ( "finalizar-pago" );
 
@@ -148,5 +192,38 @@
             finalizarPago.style.display = "block";    
         } );
     </script>
+
+    <!-- Script PHP -->
+    <script>
+        // Identifica si el usuario inició sesión
+        var usuarioExistente = <?php echo $usuarioExistente ? 'true' : 'false'; ?>;
+
+        if (usuarioExistente) {
+            // Obtener los datos del usuario de las variables PHP
+            var nombre = "<?php echo $nombre; ?>";
+            var apellido = "<?php echo $apellido; ?>";
+            var correo = "<?php echo $correo; ?>";
+            var telefono = "<?php echo $telefono; ?>";
+
+            // Completar los campos del formulario con los datos del usuario
+            document.getElementById('nombre').value = nombre;
+            document.getElementById('apellido').value = apellido;
+            document.getElementById('correo').value = correo;
+            document.getElementById('telefono').value = telefono;
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Recupera los datos desde localStorage
+            var cantBoletosTotal = localStorage.getItem('cantBoletosTotal');
+            var asientos_select = localStorage.getItem('asientos_select');
+            var precioTotal = localStorage.getItem('precioTotal');
+
+            // Actualiza los elementos span con los datos recuperados
+            document.getElementById('cantidad-boletos-pago').textContent = cantBoletosTotal;
+            document.getElementById('numeros-boletos').textContent = asientos_select;
+            document.getElementById('total3').textContent = precioTotal;
+        });
+    </script>
+
 </body>
 </html>
