@@ -83,7 +83,6 @@
     
             <div class="botones-pago">
                 <div id="paypal-button-container"></div>
-                <p id="result-message"></p>
                 <!-- <form id="boton-paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                     <input type="hidden" name="cmd" value="_s-xclick" />
                     <input type="hidden" name="hosted_button_id" value="8XHX7Y36UEVWJ" />
