@@ -1,6 +1,8 @@
 <?php
     require __DIR__ . '\funciones.php';
     $tabla_peliculas = obtener_peliculas();
+
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -36,13 +38,21 @@
                     <a href="#"> Más &#x25BE; </a>
                     
                     <div class="dropdown-content">
-                        <a href="contacto.html"> Contacto </a>
-                        <a href="sobre-nosotros.html"> Sobre Nosotros </a>
+                        <a href="contacto.php"> Contacto </a>
+                        <a href="sobre-nosotros.php"> Sobre Nosotros </a>
                     </div>
                 </li>
 
                 <li> <a href="index.php"> Inicio </a> </li>
-                <li> <a href="login.php"> Log In </a> </li>
+                <?php
+                    if (isset($_SESSION['user'])) {
+                        // Si el usuario tiene una sesión iniciada, mostrar "Log Out"
+                        echo '<li> <a href="logout.php"> Log Out </a> </li>';
+                    } else {
+                        // Si el usuario no tiene una sesión iniciada, mostrar "Log In"
+                        echo '<li> <a href="login.php"> Log In </a> </li>';
+                    }
+                ?>
             </ul>
         </nav>
     </header>

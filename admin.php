@@ -280,7 +280,7 @@
         </form>
     </div>
     
-    <div class="cerrar-sesión">
+    <div class="cerrar-sesion">
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
             <input type="submit" name="cerrar-sesion" value="Cerrar Sesión">
         </form>

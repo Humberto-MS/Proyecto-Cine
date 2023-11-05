@@ -23,7 +23,7 @@
                 $_SESSION['user'] = $user;
                 header('location: index.php');
                 exit;
-            } elseif ($rol === 'admin') {
+            } else if ($rol === 'admin') {
                 // Administrador, redirige a admin.php
                 session_start();
                 $_SESSION['user'] = $user;
