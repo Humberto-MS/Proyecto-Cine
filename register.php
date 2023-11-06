@@ -12,7 +12,7 @@
         $telefono = $_POST["telefono"] ?? null;
 
         //* Registrar Cliente
-        $sql = "INSERT INTO cliente (user,pass,nombre,apellidos,correo,telefono,rol)
+        $sql = "INSERT INTO cliente (user,pass,nombre,apellido,correo,telefono,rol)
                                     VALUES ('$user','$pass','$nombre','$apellido',
                                             '$correo','$telefono','usuario')";
         if (mysqli_query($conn, $sql)) {
