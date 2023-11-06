@@ -54,59 +54,53 @@
 </head>
 <body>
     
-    <div class="contenido-pago">
-        <div class="datos-personales">
-            <h2> Información Personal </h2>
-    
-            <div class="inputs-modal-pago">
-                <input type="text" id="nombre" placeholder="Nombre">
-                <input type="text" id="apellido" placeholder="Apellidos">
-                <input type="email" id="correo" placeholder="Correo">
-                <input type="tel" id="telefono" placeholder="Teléfono">
-            </div>      
-        </div>
-    
-        <div class="realizar-pago">
-            <h2> Total a Pagar </h2>
-    
-            <p class="texto">
-                <b>Cantidad de boletos:</b> <span id="cantidad-boletos-pago"> 0 </span> boleto(s)
-            </p>
-    
-            <p class="texto">
-                <b>Boleto(s):</b> <span id="numeros-boletos"> 0 </span>
-            </p>
-    
-            <p class="texto">
-                <b>Total:</b> $<span id="total3"> 0 </span>
-            </p>
-    
-            <div class="botones-pago">
-                <div id="paypal-button-container"></div>
-                <!-- <form id="boton-paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-                    <input type="hidden" name="cmd" value="_s-xclick" />
-                    <input type="hidden" name="hosted_button_id" value="8XHX7Y36UEVWJ" />
-                    <input type="hidden" name="currency_code" value="MXN" />
-                    <input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_paynow_SM.gif" border="0" name="submit" title="PayPal es una forma segura y fácil de pagar en línea." alt="Comprar ahora" />
-                </form> -->
-    
-                <button class="confirmar-pago" name="confirmar-pago" id="confirmar-pago">Pago Realizado</button>
-            </div>                    
-    
-            <div class="contenedor-botones-pago">    
-                <form id="boton-recibo" action="recibo.html" target="_blank">
+    <div>
+        <form class="contenido-pago" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+            <div class="datos-personales">
+                <h2> Información Personal </h2>
+        
+                <div class="inputs-modal-pago">
+                    <input type="text" id="nombre" placeholder="Nombre">
+                    <input type="text" id="apellido" placeholder="Apellidos">
+                    <input type="email" id="correo" placeholder="Correo">
+                    <input type="tel" id="telefono" placeholder="Teléfono">
+                </div>      
+            </div>
+        
+            <div class="realizar-pago">
+                <h2> Total a Pagar </h2>
+        
+                <p class="texto">
+                    <b>Cantidad de boletos:</b> <span id="cantidad-boletos-pago">  </span> boleto(s)
+                </p>
+        
+                <p class="texto">
+                    <b>Boleto(s):</b> <span id="numeros-boletos">  </span>
+                </p>
+        
+                <p class="texto">
+                    <b>Total:</b> $<span id="total3">  </span>
+                </p>
+        
+                <div class="botones-pago">
+                    <div id="paypal-button-container"></div>
+        
+                    <!-- <button class="confirmar-pago" name="confirmar-pago" id="confirmar-pago">Pago Realizado</button> -->
+                </div>                    
+        
+                <div class="contenedor-botones-pago">    
                     <div class="boton-modal">
-                        <button id="imprimir-pago">Recibo</button>
+                        <button onclick="window.location.href = 'recibo.php';" id="imprimir-pago">Recibo</button>
                     </div>
-                </form> 
-
-                <form id="boton-finalizar" action="index.php" target="_self">
+                    
                     <div class="boton-modal">
-                        <button id="finalizar-pago">Regresar al Inicio</button>
+                        <button onclick="window.location.href = 'index.php';" id="finalizar-pago">Regresar al Inicio</button>
                     </div>
-                </form>              
-            </div>   
-        </div>
+                                
+                </div>   
+            </div>
+        </form>
+        
     </div>
     
     <footer>
@@ -156,39 +150,20 @@
         
     </footer>
     
-    <!-- <script src="script.js"></script> -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AYqbtbFUBHWJE13vnIhXF0bXyCu27rauEsdg6SRUncEf960VJx0yniZ-IZCCSAIG1GCNhacyJxegmUgR&currency=USD"></script>
-    <script src="app.js"></script>
-
     <!-- Script Botones -->
     <script>
         const finalizarPago = document.getElementById ( "finalizar-pago" );
-
-        const boton_recibo = document.getElementById ( "boton-recibo" );
-        // const boton_paypal = document.getElementById ( "boton-paypal" );
-        const boton_confirmar = document.getElementById ( "confirmar-pago" );
+        const boton_recibo = document.getElementById ( "imprimir-pago" );
+        const boton_paypal = document.getElementById ( "paypal-button-container" );
 
         const total3 = document.getElementById ( "total3" );
-
         const boletosTotales_pago = document.getElementById ( "cantidad-boletos-pago" );
         const numeros_boletos = document.getElementById ( "numeros-boletos" );
 
         finalizarPago.addEventListener ( "click", () => {
-            // boton_paypal.style.display = "flex";
-            boton_confirmar.style.display = "none";
+            boton_paypal.style.display = "flex";
             boton_recibo.style.display = "none";
             finalizarPago.style.display = "none";
-        } );
-
-        // boton_paypal.addEventListener ( "click", () => {
-        //     boton_paypal.style.display = "none";
-        //     boton_confirmar.style.display = "block";
-        // } );
-
-        boton_confirmar.addEventListener ( "click", () => {
-            boton_confirmar.style.display = "none";
-            boton_recibo.style.display = "block";
-            finalizarPago.style.display = "block";    
         } );
     </script>
 
@@ -198,24 +173,30 @@
         <?php
             if ($usuarioExistente) { ?>
                 // Completar los campos del formulario con los datos del usuario
-                document.getElementById('nombre').value = <?php echo $nombre; ?>;
-                document.getElementById('apellido').value = <?php echo $apellido; ?>;
-                document.getElementById('correo').value = <?php echo $correo; ?>;
-                document.getElementById('telefono').value = <?php echo $telefono; ?>;
+                document.getElementById('nombre').value = "<?php echo $nombre; ?>";
+                document.getElementById('apellido').value = "<?php echo $apellido; ?>";
+                document.getElementById('correo').value = "<?php echo $correo; ?>";
+                document.getElementById('telefono').value = "<?php echo $telefono; ?>";
         <?php } ?>
 
-        document.addEventListener("DOMContentLoaded", function() {
-            // Recupera los datos desde localStorage
-            var cantBoletosTotal = localStorage.getItem('cantBoletosTotal');
-            var asientos_select = localStorage.getItem('asientos_select');
-            var precioTotal = localStorage.getItem('precioTotal');
+        //document.addEventListener("DOMContentLoaded", function() {
+        // Recupera los datos desde localStorage
+        var cantBoletosTotal = localStorage.getItem('cantBoletosTotal');
+        var asientos_select = localStorage.getItem('asientos_select');
+        var precioTotal = localStorage.getItem('precioTotal');
+        
+        // Actualiza los elementos span con los datos recuperados
+        document.getElementById('cantidad-boletos-pago').innerText = cantBoletosTotal;
+        document.getElementById('numeros-boletos').innerText = asientos_select;
+        document.getElementById('total3').innerText = precioTotal;
+        //});
 
-            // Actualiza los elementos span con los datos recuperados
-            document.getElementById('cantidad-boletos-pago').innerText = cantBoletosTotal;
-            document.getElementById('numeros-boletos').innerText = asientos_select;
-            document.getElementById('total3').innerText = precioTotal;
-        });
+        // Variable global
+        // const total = precioTotal;
     </script>
+
+    <script src="https://www.paypal.com/sdk/js?client-id=AYqbtbFUBHWJE13vnIhXF0bXyCu27rauEsdg6SRUncEf960VJx0yniZ-IZCCSAIG1GCNhacyJxegmUgR&currency=USD"></script>
+    <script src="app.js"></script>
 
 </body>
 </html>

@@ -912,7 +912,7 @@ footer p {
     color: white;
 }
 
-.realizar-pago #boton-paypal {
+.realizar-pago #paypal-button-container {
     display: flex;
     justify-content: center;
     margin-top: 2rem;
@@ -928,7 +928,7 @@ footer p {
     margin-bottom: 0;
 }
 
-#boton-recibo {
+#imprimir-pago {
     display: none;
 }
 
