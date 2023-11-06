@@ -10,7 +10,7 @@
 
         $user = $_SESSION['user'];
 
-        $sql = "SELECT nombre, apellidos, correo, telefono FROM CLIENTE WHERE user = '$user'";
+        $sql = "SELECT nombre, apellidos, correo, telefono FROM cliente WHERE user = '$user'";
 
         $result = $conn->query($sql);
 
@@ -37,7 +37,7 @@
             $asientos = $_POST['asientos_select'];
             $precio_total = $_POST['precioTotal'];
 
-            $sql = "INSERT INTO COMPRA (id_compra,titulo_espanol,user,nombre,
+            $sql = "INSERT INTO compra (id_compra,titulo_espanol,user,nombre,
                                         apellidos,correo,telefono,cant_boletos,
                                         asientos,total) 
                     VALUES ('null','$titulo','$user','$nombre','$apellido','$correo',
@@ -61,7 +61,7 @@
             $asientos = $_POST['asientos_select'];
             $precio_total = $_POST['precioTotal'];
 
-            $sql = "INSERT INTO COMPRA (id_compra,titulo_espanol,user,nombre,
+            $sql = "INSERT INTO compra (id_compra,titulo_espanol,user,nombre,
                                         apellidos,correo,telefono,cant_boletos,
                                         asientos,total) 
                     VALUES ('null','$titulo','null','$nombre','$apellido','$correo',
