@@ -19,7 +19,7 @@
 
             // Guarda los datos del usuario en variables
             $nombre = $fila['nombre'];
-            $apellido = $fila['apellidos'];
+            $apellido = $fila['apellido'];
             $correo = $fila['correo'];
             $telefono = $fila['telefono'];
         }
