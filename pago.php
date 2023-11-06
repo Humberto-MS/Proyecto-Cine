@@ -10,7 +10,7 @@
 
         $user = $_SESSION['user'];
 
-        $sql = "SELECT nombre, apellido, correo, telefono FROM cliente WHERE user = '$user'";
+        $sql = "SELECT nombre, apellidos, correo, telefono FROM cliente WHERE user = '$user'";
 
         $result = $conn->query($sql);
 
@@ -19,7 +19,7 @@
 
             // Guarda los datos del usuario en variables
             $nombre = $fila['nombre'];
-            $apellido = $fila['apellido'];
+            $apellido = $fila['apellidos'];
             $correo = $fila['correo'];
             $telefono = $fila['telefono'];
         }
@@ -45,6 +45,8 @@
 
             if (mysqli_query($conn, $sql)) {
                 //echo "Finalizado";
+                header('location: recibo.php?pelicula='.$titulo.'&asientos='.$asientos);
+                exit;
             } else {
                 echo "Error" . mysqli_error($conn);
             }
@@ -67,6 +69,8 @@
 
             if (mysqli_query($conn, $sql)) {
                 //echo "Finalizado";
+                header('location: recibo.php?pelicula='.$titulo.'&asientos='.$asientos);
+                exit;
             } else {
                 echo "Error" . mysqli_error($conn);
             }   
@@ -94,7 +98,7 @@
 <body>
     
     <div>
-        <form id="form-compra" class="contenido-pago" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" target="_blank">
+        <form id="form-compra" class="contenido-pago" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
             <div class="datos-personales">
                 <h2> Información Personal </h2>
         
@@ -132,18 +136,7 @@
         
                 <div class="botones-pago">
                     <div id="paypal-button-container"></div>
-                </div>                    
-        
-                <div class="contenedor-botones-pago">    
-                    <div class="boton-modal">
-                        <button id="imprimir-pago">Recibo</button>
-                    </div>
-                    
-                    <div class="boton-modal">
-                        <button id="finalizar-pago">Regresar al Inicio</button>
-                    </div>
-                                
-                </div>   
+                </div> 
             </div>
         </form>
         
@@ -195,11 +188,8 @@
         <p class="copyright"> ©Copyright 2023. Todos los derechos reservados a MelvinPolis® | Aviso de privacidad | Términos y condiciones </p>
         
     </footer>
-    
-    <!-- Script Botones -->
+
     <script>
-        const finalizarPago = document.getElementById ( "finalizar-pago" );
-        const boton_recibo = document.getElementById ( "imprimir-pago" );
         const boton_paypal = document.getElementById ( "paypal-button-container" );
         const form_pago = document.getElementById ( "form-compra" );
 
@@ -208,27 +198,6 @@
         const numeros_boletos = document.getElementById ( "numeros-boletos" );
         const titulo = document.getElementById ( "titulo-pelicula" );
 
-        finalizarPago.addEventListener ( "click", (e) => {
-            e.preventDefault();
-            boton_paypal.style.display = "flex";
-            boton_recibo.style.display = "none";
-            finalizarPago.style.display = "none";
-            window.location.replace ( 'index.php' );
-        } );
-
-        boton_recibo.addEventListener ( "click", (e) => {
-            e.preventDefault();
-            window.open ( "recibo.php", "_blank" );
-        } );
-
-        form_pago.addEventListener ( "submit", (e) => {
-            console.log("pepopepopepo");
-            e.preventDefault();
-        } );    
-    </script>
-
-    <!-- Script PHP -->
-    <script>
         // Identifica si el usuario inició sesión
         <?php
             if ($usuarioExistente) { ?>
