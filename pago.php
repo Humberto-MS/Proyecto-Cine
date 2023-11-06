@@ -30,7 +30,45 @@
     // Recupera los datos del cliente y los ingresa a la tabla Compra
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($usuarioExistente) {
-            $sql = "INSERT INTO compra ()";
+            // Obtiene datos
+            $user = $_SESSION['user'];
+            $cant_boletos = $_POST['cantBoletosTotal'];
+            $asientos = $_POST['asientos_select'];
+            $precio_total = $_POST['precioTotal'];
+
+            $sql = "INSERT INTO compra (id_compra,titulo_espanol,user,nombre,
+                                        apellido,correo,telefono,cant_boletos,
+                                        asientos,total) 
+                    VALUES ('null','null','$user','$nombre','$apellido','$correo',
+                            '$telefono','$cant_boletos','$asientos','$total')";
+
+            if (mysqli_query($conn, $sql)) {
+                //echo "Cliente Insertado Exitosamente";
+            } else {
+                echo "Error" . mysqli_error($conn);
+            }
+        } else {
+            // Obtiene datos completos (no es usuario registrado)
+            $user = $_SESSION['user'];
+            $nombre = $_POST['nombre'];
+            $apellido = $_POST['apellido'];
+            $correo = $_POST['correo'];
+            $telefono = $_POST['telefono'];
+            $cant_boletos = $_POST['cantBoletosTotal'];
+            $asientos = $_POST['asientos_select'];
+            $precio_total = $_POST['precioTotal'];
+
+            $sql = "INSERT INTO compra (id_compra,titulo_espanol,user,nombre,
+                                        apellido,correo,telefono,cant_boletos,
+                                        asientos,total) 
+                    VALUES ('null','null','$user','$nombre','$apellido','$correo',
+                            '$telefono','$cant_boletos','$asientos','$total')";
+
+            if (mysqli_query($conn, $sql)) {
+                //echo "Cliente Insertado Exitosamente";
+            } else {
+                echo "Error" . mysqli_error($conn);
+            }   
         }
     }
 ?>
@@ -55,15 +93,19 @@
 <body>
     
     <div>
-        <form class="contenido-pago" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+        <form id="form-compra" class="contenido-pago" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
             <div class="datos-personales">
                 <h2> Información Personal </h2>
         
                 <div class="inputs-modal-pago">
-                    <input type="text" id="nombre" placeholder="Nombre">
-                    <input type="text" id="apellido" placeholder="Apellidos">
-                    <input type="email" id="correo" placeholder="Correo">
-                    <input type="tel" id="telefono" placeholder="Teléfono">
+                    <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+                    <input type="text" name="apellido" id="apellido" placeholder="Apellidos">
+                    <input type="email" name="correo" id="correo" placeholder="Correo">
+                    <input type="tel" name="telefono" id="telefono" placeholder="Teléfono">
+
+                    <input type="hidden" name="cantBoletosTotal" id="cantBoletosTotal">
+                    <input type="hidden" name="asientos_select" id="asientos_select">
+                    <input type="hidden" name="precioTotal" id="precioTotal">
                 </div>      
             </div>
         
@@ -189,6 +231,11 @@
         document.getElementById('cantidad-boletos-pago').innerText = cantBoletosTotal;
         document.getElementById('numeros-boletos').innerText = asientos_select;
         document.getElementById('total3').innerText = precioTotal;
+
+        // Asigna los valores a los campos del formulario
+        document.getElementById('cantBoletosTotal').value = cantBoletosTotal;
+        document.getElementById('asientos_select').value = asientos_select;
+        document.getElementById('precioTotal').value = precioTotal;
         //});
 
         // Variable global

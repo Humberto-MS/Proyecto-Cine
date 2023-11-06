@@ -17,6 +17,7 @@ paypal.Buttons ({
       console.log('Capture result', orderData,JSON.stringify(orderData,null,2));
       const transaction = orderData.purchase_units[0].payments.captures[0];
       //alert(`Transaction ${transaction}.status}: ${transaction.id}`);
+      document.getElementById('form-compra').submit();
       boton_paypal.style.display = "none";
       boton_recibo.style.display = "block";
       finalizarPago.style.display = "block";    
