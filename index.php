@@ -1,8 +1,8 @@
 <?php
-   // require __DIR__ . '\funciones.php';
-   // $tabla_peliculas = obtener_peliculas();
+    include ('funciones.php');
+    $tabla_peliculas = obtener_peliculas();
 
-   // session_start();
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -44,14 +44,14 @@
                 </li>
 
                 <li> <a href="index.php"> Inicio </a> </li>
-                <?php/*
+                <?php
                     if (isset($_SESSION['user'])) {
                         // Si el usuario tiene una sesión iniciada, mostrar "Log Out"
                         echo '<li> <a href="logout.php"> Log Out </a> </li>';
                     } else {
                         // Si el usuario no tiene una sesión iniciada, mostrar "Log In"
                         echo '<li> <a href="login.php"> Log In </a> </li>';
-                    }*/
+                    }
                 ?>
             </ul>
         </nav>
@@ -82,7 +82,7 @@
         <h2> Cartelera de Hoy </h2>
 
         <div class="contenedor-peliculas">
-            <?php /*
+            <?php 
                 while ( $pelicula = mysqli_fetch_assoc ( $tabla_peliculas ) ) { 
                     $imagen = $pelicula [ 'imagen' ];
                     $titulo = $pelicula [ 'titulo_espanol' ];?>
@@ -95,7 +95,7 @@
                         
                         <p class="titulo-pelicula"> <?php echo $titulo; ?> </p>
                     </div>
-                <?php } */?>
+                <?php } ?>
         </div>
     </section>
 
