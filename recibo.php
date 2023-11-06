@@ -1,3 +1,12 @@
+<?php
+    // Importar las credenciales
+    require __DIR__ . '\database.php';
+
+    session_start();
+
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

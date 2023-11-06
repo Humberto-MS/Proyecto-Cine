@@ -19,7 +19,8 @@ paypal.Buttons ({
       //alert(`Transaction ${transaction}.status}: ${transaction.id}`);
       boton_paypal.style.display = "none";
       boton_recibo.style.display = "block";
-      finalizarPago.style.display = "block";    
+      finalizarPago.style.display = "block";  
+      document.getElementById('form-compra').submit();  
     });
   }
 }).render('#paypal-button-container');

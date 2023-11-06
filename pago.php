@@ -30,7 +30,46 @@
     // Recupera los datos del cliente y los ingresa a la tabla Compra
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($usuarioExistente) {
-            $sql = "INSERT INTO compra ()";
+            // Obtiene datos
+            $titulo = $_POST['titulo_pelicula'];
+            $user = $_SESSION['user'];
+            $cant_boletos = $_POST['cantBoletosTotal'];
+            $asientos = $_POST['asientos_select'];
+            $precio_total = $_POST['precioTotal'];
+
+            $sql = "INSERT INTO compra (id_compra,titulo_espanol,user,nombre,
+                                        apellidos,correo,telefono,cant_boletos,
+                                        asientos,total) 
+                    VALUES ('null','$titulo','$user','$nombre','$apellido','$correo',
+                            '$telefono','$cant_boletos','$asientos','$precio_total')";
+
+            if (mysqli_query($conn, $sql)) {
+                //echo "Finalizado";
+            } else {
+                echo "Error" . mysqli_error($conn);
+            }
+        } else {
+            // Obtiene datos completos (no es usuario registrado)
+            $titulo = $_POST['titulo_pelicula'];
+            $nombre = $_POST['nombre'];
+            $apellido = $_POST['apellido'];
+            $correo = $_POST['correo'];
+            $telefono = $_POST['telefono'];
+            $cant_boletos = $_POST['cantBoletosTotal'];
+            $asientos = $_POST['asientos_select'];
+            $precio_total = $_POST['precioTotal'];
+
+            $sql = "INSERT INTO compra (id_compra,titulo_espanol,user,nombre,
+                                        apellidos,correo,telefono,cant_boletos,
+                                        asientos,total) 
+                    VALUES ('null','$titulo','null','$nombre','$apellido','$correo',
+                            '$telefono','$cant_boletos','$asientos','$precio_total')";
+
+            if (mysqli_query($conn, $sql)) {
+                //echo "Finalizado";
+            } else {
+                echo "Error" . mysqli_error($conn);
+            }   
         }
     }
 ?>
@@ -55,15 +94,20 @@
 <body>
     
     <div>
-        <form class="contenido-pago" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+        <form id="form-compra" class="contenido-pago" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" target="_blank">
             <div class="datos-personales">
                 <h2> Información Personal </h2>
         
                 <div class="inputs-modal-pago">
-                    <input type="text" id="nombre" placeholder="Nombre">
-                    <input type="text" id="apellido" placeholder="Apellidos">
-                    <input type="email" id="correo" placeholder="Correo">
-                    <input type="tel" id="telefono" placeholder="Teléfono">
+                    <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+                    <input type="text" name="apellido" id="apellido" placeholder="Apellidos">
+                    <input type="email" name="correo" id="correo" placeholder="Correo">
+                    <input type="tel" name="telefono" id="telefono" placeholder="Teléfono">
+
+                    <input type="hidden" name="cantBoletosTotal" id="cantBoletosTotal">
+                    <input type="hidden" name="asientos_select" id="asientos_select">
+                    <input type="hidden" name="precioTotal" id="precioTotal">
+                    <input type="hidden" name="titulo_pelicula" id="titulo_pelicula">
                 </div>      
             </div>
         
@@ -157,6 +201,7 @@
         const finalizarPago = document.getElementById ( "finalizar-pago" );
         const boton_recibo = document.getElementById ( "imprimir-pago" );
         const boton_paypal = document.getElementById ( "paypal-button-container" );
+        const form_pago = document.getElementById ( "form-compra" );
 
         const total3 = document.getElementById ( "total3" );
         const boletosTotales_pago = document.getElementById ( "cantidad-boletos-pago" );
@@ -175,6 +220,11 @@
             e.preventDefault();
             window.open ( "recibo.php", "_blank" );
         } );
+
+        form_pago.addEventListener ( "submit", (e) => {
+            console.log("pepopepopepo");
+            e.preventDefault();
+        } );    
     </script>
 
     <!-- Script PHP -->
@@ -200,6 +250,12 @@
         numeros_boletos.innerText = asientos_select;
         total3.innerText = precioTotal;
         titulo.innerText = titulo_pelicula;
+
+        // Asigna los valores a los campos del formulario
+        document.getElementById('cantBoletosTotal').value = cantBoletosTotal;
+        document.getElementById('asientos_select').value = asientos_select;
+        document.getElementById('precioTotal').value = precioTotal;
+        document.getElementById('titulo_pelicula').value = titulo_pelicula;
     </script>
 
     <script src="https://www.paypal.com/sdk/js?client-id=AYqbtbFUBHWJE13vnIhXF0bXyCu27rauEsdg6SRUncEf960VJx0yniZ-IZCCSAIG1GCNhacyJxegmUgR&currency=USD"></script>
