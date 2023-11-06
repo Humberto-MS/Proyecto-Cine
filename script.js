@@ -29,6 +29,8 @@ const boletosTotales = document.getElementById ( "cantidad-boletos" );
 
 const asientos = document.querySelectorAll ( ".fila .asiento" );
 
+const titulo = document.getElementById ( "titulo-pelicula" ).innerHTML;
+
 let asientos_select = [];
 let precioTotal = 0;
 let cantBoletosAdulto = 0;
@@ -146,18 +148,16 @@ asientos.forEach ( asiento => {
     } );
 } );
 
-const url = 'pago.php?cant_boletos=' + cantBoletosTotal + '&asientos=' + asientos_select + '&total=' + precioTotal;
-
 continuarAsientos.addEventListener ( "click", () => {
     if ( asientos_select.length != 0 && asientos_select.length == cantBoletosTotal ) {        
         modalAsientos.classList.remove ( "mostrar-modal" );
         asientos_select.sort();
-        // window.location.href = url;
 
         // Almacena los datos en localStorage
         localStorage.setItem('cantBoletosTotal', cantBoletosTotal);
         localStorage.setItem('asientos_select', asientos_select);
         localStorage.setItem('precioTotal', precioTotal);
+        localStorage.setItem('titulo', titulo);
 
         window.location.href = 'pago.php';
     }    

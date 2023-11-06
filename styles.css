@@ -936,7 +936,6 @@ footer p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 4rem;
 }
 
 .contenido-pago {
