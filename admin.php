@@ -203,7 +203,7 @@
                     <option value="default_titulo"> Selecciona un Título </option>
                     <?php
                         if ($conn) {
-                            $sql_titulo = "SELECT titulo_espanol FROM PELICULA";                                
+                            $sql_titulo = "SELECT titulo_espanol FROM pelicula";                                
                             $titulos = mysqli_query($conn, $sql_titulo);
                         
                             if ($titulos) {
@@ -265,7 +265,7 @@
                     <option value="default_usuario"> Selecciona un Usuario </option>
                     <?php
                         if ($conn) {
-                           $sql_usuario = "SELECT user FROM CLIENTE";
+                           $sql_usuario = "SELECT user FROM cliente";
                             $usuarios = mysqli_query($conn, $sql_usuario);
                         
                             if ($usuarios) {
