@@ -81,7 +81,7 @@
                              alt="pelicula interestelar">
                         
                         <div class="titulo">
-                            <h2 class="titulo-espanol"> <?php echo $titulo_esp; ?> </h2>
+                            <h2 id="titulo-pelicula" class="titulo-espanol"> <?php echo $titulo_esp; ?> </h2>
                             <h4 class="titulo-ingles"> <?php echo $titulo_ing; ?> </h4>
                         </div>
                     </div>

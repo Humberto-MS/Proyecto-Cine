@@ -111,6 +111,10 @@
         
             <div class="realizar-pago">
                 <h2> Total a Pagar </h2>
+
+                <p class="texto">
+                    <b>Película:</b> <span id="titulo-pelicula">  </span>
+                </p>
         
                 <p class="texto">
                     <b>Cantidad de boletos:</b> <span id="cantidad-boletos-pago">  </span> boleto(s)
@@ -126,17 +130,15 @@
         
                 <div class="botones-pago">
                     <div id="paypal-button-container"></div>
-        
-                    <!-- <button class="confirmar-pago" name="confirmar-pago" id="confirmar-pago">Pago Realizado</button> -->
                 </div>                    
         
                 <div class="contenedor-botones-pago">    
                     <div class="boton-modal">
-                        <button onclick="window.location.href = 'recibo.php';" id="imprimir-pago">Recibo</button>
+                        <button id="imprimir-pago">Recibo</button>
                     </div>
                     
                     <div class="boton-modal">
-                        <button onclick="window.location.href = 'index.php';" id="finalizar-pago">Regresar al Inicio</button>
+                        <button id="finalizar-pago">Regresar al Inicio</button>
                     </div>
                                 
                 </div>   
@@ -201,11 +203,19 @@
         const total3 = document.getElementById ( "total3" );
         const boletosTotales_pago = document.getElementById ( "cantidad-boletos-pago" );
         const numeros_boletos = document.getElementById ( "numeros-boletos" );
+        const titulo = document.getElementById ( "titulo-pelicula" );
 
-        finalizarPago.addEventListener ( "click", () => {
+        finalizarPago.addEventListener ( "click", (e) => {
+            e.preventDefault();
             boton_paypal.style.display = "flex";
             boton_recibo.style.display = "none";
             finalizarPago.style.display = "none";
+            window.location.replace ( 'index.php' );
+        } );
+
+        boton_recibo.addEventListener ( "click", (e) => {
+            e.preventDefault();
+            window.open ( "recibo.php", "_blank" );
         } );
     </script>
 
@@ -221,25 +231,17 @@
                 document.getElementById('telefono').value = "<?php echo $telefono; ?>";
         <?php } ?>
 
-        //document.addEventListener("DOMContentLoaded", function() {
         // Recupera los datos desde localStorage
         var cantBoletosTotal = localStorage.getItem('cantBoletosTotal');
         var asientos_select = localStorage.getItem('asientos_select');
         var precioTotal = localStorage.getItem('precioTotal');
+        var titulo_pelicula = localStorage.getItem('titulo');
         
         // Actualiza los elementos span con los datos recuperados
-        document.getElementById('cantidad-boletos-pago').innerText = cantBoletosTotal;
-        document.getElementById('numeros-boletos').innerText = asientos_select;
-        document.getElementById('total3').innerText = precioTotal;
-
-        // Asigna los valores a los campos del formulario
-        document.getElementById('cantBoletosTotal').value = cantBoletosTotal;
-        document.getElementById('asientos_select').value = asientos_select;
-        document.getElementById('precioTotal').value = precioTotal;
-        //});
-
-        // Variable global
-        // const total = precioTotal;
+        boletosTotales_pago.innerText = cantBoletosTotal;
+        numeros_boletos.innerText = asientos_select;
+        total3.innerText = precioTotal;
+        titulo.innerText = titulo_pelicula;
     </script>
 
     <script src="https://www.paypal.com/sdk/js?client-id=AYqbtbFUBHWJE13vnIhXF0bXyCu27rauEsdg6SRUncEf960VJx0yniZ-IZCCSAIG1GCNhacyJxegmUgR&currency=USD"></script>
