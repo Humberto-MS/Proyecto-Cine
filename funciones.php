@@ -2,7 +2,7 @@
     function obtener_pelicula_con_variable() {
         try {
             // Importar las credenciales
-            require __DIR__ . '\database.php';
+            include ('database.php');
 
             $titulo = $_GET [ 'pelicula' ];
 
@@ -25,7 +25,7 @@
     function obtener_peliculas() {
         try {
             // Importar las credenciales
-            require __DIR__ . '\database.php';
+            require ('database.php');
 
             // Consulta SQL
             $sql = "SELECT * FROM PELICULA;";         
@@ -46,7 +46,7 @@
     function obtener_datos_recibo() {
         try {
             // Importar las credenciales
-            require __DIR__ . '\database.php';
+            require ('database.php');
 
             $titulo = $_GET [ 'pelicula' ];
             $asientos = $_GET [ 'asientos' ];

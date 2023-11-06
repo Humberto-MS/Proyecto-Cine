@@ -1,5 +1,5 @@
 <?php
-    require __DIR__ . '\funciones.php';
+    include ('funciones.php');
     $pelicula = obtener_pelicula_con_variable();
 
     session_start();

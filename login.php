@@ -1,6 +1,6 @@
 <?php
     // Importar las credenciales
-    require __DIR__ . '\database.php';
+    require ('database.php');
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //? Declaración

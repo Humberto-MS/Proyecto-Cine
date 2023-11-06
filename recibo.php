@@ -1,5 +1,5 @@
 <?php
-    require __DIR__ . '\funciones.php';
+    include ('funciones.php');
     $compra = obtener_datos_recibo();
 
     session_start();
