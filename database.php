@@ -1,7 +1,7 @@
 <?php
     $dbhost = "localhost";
-    $dbname = "u748726467_cine";
-    $dbuser = "u748726467_admin";
+    $dbname = "cine";
+    $dbuser = "admin";
     $dbpass = "pap0Pep0";
 
     // $dbhost = "localhost";
