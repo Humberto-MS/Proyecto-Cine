@@ -7,7 +7,7 @@
             $titulo = $_GET [ 'pelicula' ];
 
             // Consulta SQL
-            $sql = "SELECT * FROM pelicula WHERE titulo_espanol = '$titulo';";         
+            $sql = "SELECT * FROM PELICULA WHERE titulo_espanol = '$titulo';";         
 
             // Realizar la consulta
             $consulta = mysqli_query ( $conn, $sql );
@@ -28,7 +28,7 @@
             require __DIR__ . '\database.php';
 
             // Consulta SQL
-            $sql = "SELECT * FROM pelicula;";         
+            $sql = "SELECT * FROM PELICULA;";         
 
             // Realizar la consulta
             $consulta = mysqli_query ( $conn, $sql );
@@ -52,7 +52,7 @@
             $asientos = $_GET [ 'asientos' ];
 
             // Consulta SQL
-            $sql = "SELECT * FROM compra WHERE titulo_espanol = '$titulo' AND asientos = '$asientos';";         
+            $sql = "SELECT * FROM COMPRA WHERE titulo_espanol = '$titulo' AND asientos = '$asientos';";         
 
             // Realizar la consulta
             $consulta = mysqli_query ( $conn, $sql );

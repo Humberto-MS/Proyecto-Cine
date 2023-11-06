@@ -6,7 +6,7 @@
         $cliente_seleccionado = $_POST["user"];
 
         // Prepara la consulta SQL para obtener los datos del usuario seleccionado
-        $sql = "SELECT * FROM cliente WHERE user = '$cliente_seleccionado'";
+        $sql = "SELECT * FROM CLIENTE WHERE user = '$cliente_seleccionado'";
 
         // Ejecuta la consulta SQL
         $resultado = mysqli_query($conn, $sql);

@@ -8,7 +8,7 @@
         $pass = $_POST["pass"] ?? null;
 
         // Verifica las credenciales en la base de datos
-        $sql = "SELECT user,rol FROM cliente WHERE user = '$user' AND pass = '$pass'";
+        $sql = "SELECT user,rol FROM CLIENTE WHERE user = '$user' AND pass = '$pass'";
 
         $result = $conn->query($sql);
 

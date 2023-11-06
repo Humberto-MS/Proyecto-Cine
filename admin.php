@@ -26,7 +26,7 @@
 
         //* Alta Pelicula
         if (isset($_POST["alta-pelicula"])) {
-            $sql = "INSERT INTO pelicula (titulo_espanol,titulo_ingles,imagen,sinopsis,clasificacion,genero,director,reparto,
+            $sql = "INSERT INTO PELICULA (titulo_espanol,titulo_ingles,imagen,sinopsis,clasificacion,genero,director,reparto,
                                          trailer,asientos_disponibles) 
                     VALUES ('$titulo_espanol','$titulo_ingles','$imagen','$sinopsis','$clasificacion','$genero','$director',
                             '$reparto','$trailer','$asientos_disponibles')";
@@ -39,7 +39,7 @@
 
         //* Baja Pelicula
         } else if (isset($_POST["baja-pelicula"])) {
-            $sql = "DELETE FROM pelicula WHERE titulo_espanol = '$titulo_espanol'";
+            $sql = "DELETE FROM PELICULA WHERE titulo_espanol = '$titulo_espanol'";
 
             if (mysqli_query($conn, $sql)) {
                 //echo "Pelicula Eliminada Exitosamente";
@@ -51,7 +51,7 @@
         } else if (isset($_POST["modificar-pelicula"])) {
             $titulo_original = $_POST["titulo_original"] ?? null;
             
-            $sql = "UPDATE pelicula SET titulo_espanol = '$titulo_espanol',
+            $sql = "UPDATE PELICULA SET titulo_espanol = '$titulo_espanol',
                                         titulo_ingles = '$titulo_ingles',
                                         imagen = '$imagen',
                                         sinopsis = '$sinopsis',
@@ -71,7 +71,7 @@
 
         //* Alta Cliente
         } else if (isset($_POST["alta-cliente"])) {
-            $sql = "INSERT INTO cliente (user,pass,nombre,apellido,correo,telefono,rol)
+            $sql = "INSERT INTO CLIENTE (user,pass,nombre,apellido,correo,telefono,rol)
                                         VALUES ('$user','$pass','$nombre','$apellido',
                                                 '$correo','$telefono','usuario')";
             if (mysqli_query($conn, $sql)) {
@@ -82,7 +82,7 @@
 
         //* Baja Cliente
         } else if (isset($_POST["baja-cliente"])) {
-            $sql = "DELETE FROM cliente WHERE user = '$user'";
+            $sql = "DELETE FROM CLIENTE WHERE user = '$user'";
 
             if (mysqli_query($conn, $sql)) {
                 //echo "Cliente Eliminado Exitosamente";
@@ -94,7 +94,7 @@
         } else if (isset($_POST["modificar-cliente"])) {
             $user_original = $_POST["user_original"] ?? null;
 
-            $sql = "UPDATE cliente SET user = '$user',
+            $sql = "UPDATE CLIENTE SET user = '$user',
                                         pass = '$pass',
                                         nombre = '$nombre',
                                         apellido = '$apellido',
@@ -203,7 +203,7 @@
                     <option value="default_titulo"> Selecciona un Título </option>
                     <?php
                         if ($conn) {
-                            $sql_titulo = "SELECT titulo_espanol FROM pelicula";                                
+                            $sql_titulo = "SELECT titulo_espanol FROM PELICULA";                                
                             $titulos = mysqli_query($conn, $sql_titulo);
                         
                             if ($titulos) {
@@ -265,7 +265,7 @@
                     <option value="default_usuario"> Selecciona un Usuario </option>
                     <?php
                         if ($conn) {
-                           $sql_usuario = "SELECT user FROM cliente";
+                           $sql_usuario = "SELECT user FROM CLIENTE";
                             $usuarios = mysqli_query($conn, $sql_usuario);
                         
                             if ($usuarios) {

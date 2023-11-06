@@ -6,7 +6,7 @@
         $titulo_seleccionado = $_POST["titulo_espanol"];
 
         // Prepara la consulta SQL para obtener los datos de la película seleccionada
-        $sql = "SELECT * FROM pelicula WHERE titulo_espanol = '$titulo_seleccionado'";
+        $sql = "SELECT * FROM PELICULA WHERE titulo_espanol = '$titulo_seleccionado'";
 
         // Ejecuta la consulta SQL
         $resultado = mysqli_query($conn, $sql);
