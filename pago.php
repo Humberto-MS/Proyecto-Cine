@@ -10,7 +10,7 @@
 
         $user = $_SESSION['user'];
 
-        $sql = "SELECT nombre, apellidos, correo, telefono FROM cliente WHERE user = '$user'";
+        $sql = "SELECT nombre, apellido, correo, telefono FROM cliente WHERE user = '$user'";
 
         $result = $conn->query($sql);
 
