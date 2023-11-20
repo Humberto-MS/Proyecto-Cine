@@ -133,6 +133,8 @@
                 <p class="texto">
                     <b>Total:</b> $<span id="total3">  </span>
                 </p>
+
+                <div id="mensaje-error" style="color: red; text-align: center;"></div>
         
                 <div class="botones-pago">
                     <div id="paypal-button-container"></div>
