@@ -103,10 +103,10 @@
                 <h2> Información Personal </h2>
         
                 <div class="inputs-modal-pago">
-                    <input type="text" name="nombre" id="nombre" placeholder="Nombre">
-                    <input type="text" name="apellido" id="apellido" placeholder="Apellidos">
-                    <input type="email" name="correo" id="correo" placeholder="Correo">
-                    <input type="tel" name="telefono" id="telefono" placeholder="Teléfono">
+                    <input type="text" name="nombre" id="nombre" placeholder="Nombre" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ, ]+" title="a-z">
+                    <input type="text" name="apellido" id="apellido" placeholder="Apellidos" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ, ]+" title="a-z">
+                    <input type="email" name="correo" id="correo" placeholder="Correo" required title="correo@correo.com">
+                    <input type="tel" name="telefono" id="telefono" placeholder="Teléfono" required pattern="\+\d{1,3}\d{10}|^\d{10}" title="+123, 123">
 
                     <input type="hidden" name="cantBoletosTotal" id="cantBoletosTotal">
                     <input type="hidden" name="asientos_select" id="asientos_select">

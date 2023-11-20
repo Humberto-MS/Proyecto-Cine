@@ -1043,7 +1043,7 @@ footer p {
 .contenedor-database {
     display: grid;
     grid-template-columns: 33% 33% 33%;
-    grid-template-rows: auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto auto;
     box-sizing: border-box;
     column-gap: 10px;
 }
@@ -1132,7 +1132,7 @@ footer p {
     .contenedor-database {
         display: grid;
         grid-template-columns: 50% 50%;
-        grid-template-rows: auto auto auto auto auto auto auto;
+        grid-template-rows: auto auto auto auto auto auto auto auto;
         box-sizing: border-box;
         column-gap: 10px;
     }
@@ -1146,6 +1146,11 @@ footer p {
         grid-column: 1;
         grid-row: 7;
     }
+
+    .contenedor-admin-clientes .admin-combobox {
+        grid-column: 1;
+        grid-row: 5;
+    }
 }
 
 @media ( max-width: 460px ) {
@@ -1153,4 +1158,55 @@ footer p {
         display: flex;
         flex-direction: column;
     }
+}
+
+/**************************************** Validacion JS **********************************/
+.contenedor-admin-peliculas .msg-error {
+    color: crimson;
+    padding: 10px;
+    grid-row: 6;
+    grid-column: 1;
+}
+
+@media ( max-width: 768px ) {
+    .contenedor-admin-peliculas .msg-error {
+        grid-row: 8;
+        grid-column: 1/2;
+    }
+}
+
+.contenedor-admin-clientes .msg-error {
+    color: crimson;
+    padding: 10px;
+    grid-row: 4;
+    grid-column: 1;
+}
+
+@media ( max-width: 768px ) {
+    .contenedor-admin-clientes .msg-error {
+        grid-row: 6;
+        grid-column: 1/2;
+    }
+}
+
+.msg-error-contacto {
+    color: orangered !important;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.msg-error-registro {
+    color: orangered !important;
+}
+
+.contenedor-database input:invalid {
+    border: red solid 3px;
+}
+
+.campo input:invalid {
+    border: red solid 3px;
+}
+
+.inputs-modal-pago input:invalid {
+    border: red solid 3px;
 }

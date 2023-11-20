@@ -56,39 +56,44 @@
 
     <section class="contenedor-contacto">
         <h2> Contáctanos </h2>
-        <p> Ponte en contacto con nosotros, queremos saber tu opinión </p>
 
-        <div class="contenedor-campos">
-            <div class="campo">
-                <h3> Nombre: </h3>
-                <input type="text" placeholder="Tu Nombre">
-            </div>
-
-            <div class="campo">
-                <h3> Email: </h3>
-                <input type="email" placeholder="Tu Email">
-            </div>
-
-            <div class="campo">
-                <h3> Teléfono: </h3>
-                <input type="tel" placeholder="Tu Teléfono">
-            </div>
-
-            <div class="campo">
-                <h3> Asunto: </h3>
-                <input type="text" placeholder="Asunto del correo">
-            </div>
-
-            <div class="campo">
-                <h3> Mensaje: </h3>
-                <textarea></textarea>
-            </div>
+        <div id="contacto-p">
+            <p> Ponte en contacto con nosotros, queremos saber tu opinión </p>
         </div>
 
-        <div class="alinear-boton">
-            <button type="submit"> Enviar </button>
-        </div>
+        <form action="" method="post" id="form-contacto" onsubmit="return(validarContacto());">
+            <div class="contenedor-campos">
+                <div class="campo">
+                    <h3> Nombre: </h3>
+                    <input type="text" placeholder="Tu Nombre" id="nombre-c" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ, ]+" title="a-z">
+                </div>
 
+                <div class="campo">
+                    <h3> Email: </h3>
+                    <input type="email" placeholder="Tu Email" id="correo-c" title="correo@correo.com">
+                </div>
+
+                <div class="campo">
+                    <h3> Teléfono: </h3>
+                    <input type="tel" placeholder="Tu Teléfono" id="telefono-c" pattern="\+\d{1,3}\d{10}|^\d{10}" title="+123, 123">
+                </div>
+
+                <div class="campo">
+                    <h3> Asunto: </h3>
+                    <input type="text" placeholder="Asunto del correo" id="asunto">
+                </div>
+
+                <div class="campo">
+                    <h3> Mensaje: </h3>
+                    <textarea id="mensaje"></textarea>
+                </div>
+            </div>
+
+            <div class="alinear-boton">
+                <button type="submit"> Enviar </button>
+            </div>
+        </form>
+        
     </section>
    
     <hr>
@@ -139,5 +144,8 @@
         <p class="copyright"> ©Copyright 2023. Todos los derechos reservados a MelvinPolis® | Aviso de privacidad | Términos y condiciones </p>
         
     </footer>
+
+    <script src="validacion.js"></script>
+
 </body>
 </html>
