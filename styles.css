@@ -129,72 +129,98 @@ nav {
     display: block;
 }
 
-/***************************************** Imagen ************************************/
-.contenedor-imagen {
+/***************************************** Carousel ************************************/
+.carousel-container {
     position: relative;
-}
-
-.imagen {
     width: 100%;
-    height: 100%;
-    display: block;
+    margin: auto;
+    overflow: hidden;
 }
 
-.overlay-inicio {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
+.carousel-slide {
+    display: none;
+}
+
+.carousel-slide img {
     width: 100%;
-    opacity: 0;
-    transition: .5s ease;
-    background-color: rgb(44 40 47 /60%);
+    height: 250px;
 }
 
-.contenedor-imagen:hover .overlay-inicio {
-    opacity: 1;
-}
-
-.overlay-texto {
-    color: white;
+.btn_carrusel {
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    height: 150px;
-    width: 75%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    font-size: 18px;
+    color: white;
+    background-color: black;
+    border: none;
+    cursor: pointer;
 }
 
-.overlay-texto h2 {
-    font-size: 2rem;
-    margin-bottom: 0;
+.next-button {
+    right: 0;
 }
 
-.overlay-texto h3 {
-    font-size: 1rem;
-    opacity: 0.6;
+.btn_carrusel:hover {
+    background-color: gray;
 }
 
-.overlay-texto p {
-    font-size: 0.5rem;
+.overlay {
+    display: none;
 }
 
 @media (min-width: 460px) {
-    .overlay-texto h2 {
-        font-size: 3rem;
-        margin-bottom: 0;
+    .carousel-slide img {
+        height: 700px;
     }
 
-    .overlay-texto h3 {
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        font-size: 18px;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.5s;
+    }
+
+    .carousel-slide:hover .overlay {
+        opacity: 1;
+    }
+
+    .texto-overlay {
+        width: 80%;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;    
+        align-items: center; 
+    }
+
+    .texto-overlay h2, .texto-overlay h3 {
+        margin: 1rem 0;
+    }
+
+    .texto-overlay h2 {
+        font-size: 5rem;
+    }
+
+    .texto-overlay h3 {
         font-size: 2rem;
-        opacity: 0.6;
     }
 
-    .overlay-texto p {
-        font-size: 1.5rem;
+    .texto-overlay p {
+        font-size: x-large;
     }
 }
 

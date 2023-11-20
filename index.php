@@ -57,24 +57,71 @@
         </nav>
     </header>
 
-    <section class="contenedor-imagen">
-        <a href="pelicula.php?pelicula=Oppenheimer">
-            <img class="imagen" src="imagenes/oppenheimer-cover.jpg" alt="imagen pelicula">
+    <div class="carousel-container">
+        <div class="carousel-slide">
+            <a href="pelicula.php?pelicula=Oppenheimer">
+                <img class="imagen" src="imagenes/oppenheimer-cover.jpg" alt="imagen pelicula">
 
-            <div class="overlay-inicio">
-                <div class="overlay-texto">
-                    <h2>Oppenheimer</h2>
-                    <h3>Oppenheimer</h3>
-                    
-                    <p>
-                        Durante la Segunda Guerra Mundial, el teniente general Leslie Groves designa al 
-                        físico J. Robert Oppenheimer para un grupo de trabajo que está desarrollando el 
-                        Proyecto Manhattan, cuyo objetivo consiste en fabricar la primera bomba atómica.
-                    </p>
+                <div class="overlay">
+                    <div class="texto-overlay">
+                        <h2>Oppenheimer</h2>
+                        <h3>Oppenheimer</h3>
+        
+                        <p>El físico J Robert Oppenheimer trabaja con un equipo de científicos durante el Proyecto Manhattan, que condujo al desarrollo de la bomba atómica.</p>
+                    </div>
                 </div>
-            </div>
-        </a>
-    </section>
+            </a>
+
+        </div>
+
+        <div class="carousel-slide">
+            <a href="pelicula.php?pelicula=Interestelar">
+                <img src="imagenes/interestelar-cover.jpg" alt="Imagen 2">
+
+                <div class="overlay">
+                    <div class="texto-overlay">
+                        <h2>Interestelar</h2>
+                        <h3>Interstelar</h3>
+        
+                        <p>Un grupo de científicos y exploradores, encabezados por Cooper, se embarcan en un viaje espacial para encontrar un lugar con las condiciones necesarias para reemplazar a la Tierra y comenzar una nueva vida allí. La Tierra está llegando a su fin y este grupo necesita encontrar un planeta más allá de nuestra galaxia que garantice el futuro de la raza humana.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="carousel-slide">
+            <a href="pelicula.php?pelicula=Shrek%202">
+                <img src="imagenes/shrek2-cover.avif" alt="Imagen 3">
+
+                <div class="overlay">
+                    <div class="texto-overlay">
+                        <h2>Shrek 2</h2>
+                        <h3>Shrek 2</h3>
+        
+                        <p>Sigue las hilarantes aventuras del ogro Shrek y su esposa Fiona cuando son invitados a visitar el reino de Muy Muy Lejano por los padres de Fiona, el Rey y la Reina. Mientras intentan encajar en la sociedad real, se enfrentan a desafíos inesperados que amenazan su amor y felicidad. Una vez más, Shrek y sus amigos, como el Burro y el Gato con Botas, se embarcan en una misión llena de diversión y sorpresas para restaurar el orden en el reino.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="carousel-slide">
+            <a href="pelicula.php?pelicula=Gato%20Con%20Botas:%20El%20Último%20Deseo">
+                <img src="imagenes/gatoConBotas2-cover.jpg" alt="Imagen 4">
+
+                <div class="overlay">
+                    <div class="texto-overlay">
+                        <h2>El Gato Con Botas: El Último Deseo</h2>
+                        <h3>Puss in Boots: The Last Wish</h3>
+        
+                        <p>El Gato con Botas descubre que su pasión por la aventura le ha pasado factura: ha consumido ocho de sus nueve vidas, por ello emprende un viaje épico para encontrar el mítico Último Deseo y restaurar sus nueve vidas.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <button class="btn_carrusel prev-button" onclick="prevSlide()">&#x25C0;</button>
+        <button class="btn_carrusel next-button" onclick="nextSlide()">&#x25B6;</button>
+    </div>
 
     <hr>
 
@@ -147,5 +194,7 @@
         <p class="copyright"> ©Copyright 2023. Todos los derechos reservados a MelvinPolis® | Aviso de privacidad | Términos y condiciones </p>
         
     </footer>
+
+    <script src="script-index.js"></script>
 </body>
 </html>
