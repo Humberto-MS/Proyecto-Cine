@@ -11,28 +11,18 @@
         $correo = $_POST["correo"] ?? null;
         $telefono = $_POST["telefono"] ?? null;
 
-        $userExiste = "SELECT user FROM cliente WHERE user = '$user'";
-        $result = mysqli_query($conn, $userExiste);
+        //* Registrar Cliente
+        $sql = "INSERT INTO cliente (user,pass,nombre,apellido,correo,telefono,rol)
+                VALUES ('$user','$pass','$nombre','$apellido',
+                        '$correo','$telefono','usuario')";
 
-        $error_message = "";
-
-        //* El usuario existe
-        if (mysqli_num_rows($result) > 0) {
-            $error_message = "*El Usuario ya existe";
+        if (mysqli_query($conn, $sql)) {
+            //echo "Registro Realizado con Éxito";
+            // Redirige al cliente a iniciar sesión
+            header('location: login.php');
+            exit;
         } else {
-            //* Registrar Cliente
-            $sql = "INSERT INTO cliente (user,pass,nombre,apellido,correo,telefono,rol)
-                    VALUES ('$user','$pass','$nombre','$apellido',
-                            '$correo','$telefono','usuario')";
-
-            if (mysqli_query($conn, $sql)) {
-                //echo "Registro Realizado con Éxito";
-                // Redirige al cliente a iniciar sesión
-                header('location: login.php');
-                exit;
-            } else {
-                echo "Error Al Registrar: " . mysqli_error($conn);
-            }
+            echo "Error Al Registrar: " . mysqli_error($conn);
         }
     }
 ?>
