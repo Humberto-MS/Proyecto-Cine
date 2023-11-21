@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MelvinPolis</title>
-
+        
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
@@ -172,6 +172,11 @@
                 </ol>
             </p>
         </div>
+
+        <div class="contenedor-secundario-nosotros">
+            <h2>¿Dónde nos ubicamos?</h2>
+            <div id="mapa"></div>
+        </div>
     </section>
 
     <hr>
@@ -249,6 +254,25 @@
             localStorage.setItem('modo-claro', body.classList.contains('modo-claro'));
         }
     </script>
+
+    <script>
+        function inicializarMapa() {
+            var ubicacionCine = { lat: 25.533058, lng: -103.435609 };
+            
+            var mapa = new google.maps.Map ( document.getElementById ( 'mapa' ), {
+                zoom: 15,
+                center: ubicacionCine
+            } );
+            
+            var marcador = new google.maps.Marker ( {
+                position: ubicacionCine,
+                map: mapa,
+                title: 'MelvinPolis'
+            } );
+        }
+    </script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDz_aNb0jhyZ8TOOrHbqg-zJr_VUj0VoJ4&callback=inicializarMapa"></script>
     
 </body>
 </html>
