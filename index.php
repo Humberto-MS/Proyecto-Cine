@@ -21,6 +21,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     
     <link href="styles.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     
 </head>
 <body>
@@ -135,7 +137,7 @@
                     $imagen = $pelicula [ 'imagen' ];
                     $titulo = $pelicula [ 'titulo_espanol' ];?>
 
-                    <div class="pelicula">
+                    <div class="pelicula" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
                         <?php echo "<a href='pelicula.php?pelicula=".$titulo."'>"; ?>
                             <img class="imagen-pelicula" src=<?php echo $imagen; ?> alt=<?php echo $titulo; ?>>
                             <div class="overlay-pelicula"></div>
@@ -197,6 +199,11 @@
     </footer>
 
     <script src="script-index.js"></script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 
     <script>
         // Obtener el estado actual del modo claro desde localStorage

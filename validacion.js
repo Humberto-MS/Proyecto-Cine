@@ -127,6 +127,21 @@ function validarRegistro() {
         return false;
 
     } else {
+        const msg_usuario = document.querySelector('#msg-usuario');
+    
+        if (error_message !== "") {
+            const error = document.createElement('div');
+            error.textContent = error_message;
+            error.classList.add('msg-error-registro');
+            msg_usuario.appendChild(error);
+
+            setTimeout(() => {
+                error.remove();
+            }, 5000);
+            
+            return false;
+        }
+
         return true;
-    }
+    }   
 }

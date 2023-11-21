@@ -11,17 +11,28 @@
         $correo = $_POST["correo"] ?? null;
         $telefono = $_POST["telefono"] ?? null;
 
-        //* Registrar Cliente
-        $sql = "INSERT INTO cliente (user,pass,nombre,apellido,correo,telefono,rol)
-                                    VALUES ('$user','$pass','$nombre','$apellido',
-                                            '$correo','$telefono','usuario')";
-        if (mysqli_query($conn, $sql)) {
-            //echo "Registro Realizado con Éxito";
-            // Redirige al cliente a iniciar sesión
-            header('location: login.php');
-            exit;
+        $userExiste = "SELECT user FROM cliente WHERE user = '$user'";
+        $result = mysqli_query($conn, $userExiste);
+
+        $error_message = "";
+
+        //* El usuario existe
+        if (mysqli_num_rows($result) > 0) {
+            $error_message = "*El Usuario ya existe";
         } else {
-            echo "Error Al Registrar: " . mysqli_error($conn);
+            //* Registrar Cliente
+            $sql = "INSERT INTO cliente (user,pass,nombre,apellido,correo,telefono,rol)
+                    VALUES ('$user','$pass','$nombre','$apellido',
+                            '$correo','$telefono','usuario')";
+
+            if (mysqli_query($conn, $sql)) {
+                //echo "Registro Realizado con Éxito";
+                // Redirige al cliente a iniciar sesión
+                header('location: login.php');
+                exit;
+            } else {
+                echo "Error Al Registrar: " . mysqli_error($conn);
+            }
         }
     }
 ?>
@@ -70,7 +81,7 @@
                     <input type="tel" name="telefono" id="telefono" placeholder="Teléfono" pattern="\+\d{1,3}\d{10}|^\d{10}" title="+123, 123">
                 </div>
 
-                <div class="campo">
+                <div class="campo" id="msg-usuario">
                     <h3> Nombre de Usuario: </h3>
                     <input type="text" name="user" id="user" placeholder="Username" pattern="[^@\/\\,. ]+" title="no se acepta @ / \ , .">
                 </div>
