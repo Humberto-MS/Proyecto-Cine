@@ -11,17 +11,28 @@
         $correo = $_POST["correo"] ?? null;
         $telefono = $_POST["telefono"] ?? null;
 
-        //* Registrar Cliente
-        $sql = "INSERT INTO cliente (user,pass,nombre,apellido,correo,telefono,rol)
-                                    VALUES ('$user','$pass','$nombre','$apellido',
-                                            '$correo','$telefono','usuario')";
-        if (mysqli_query($conn, $sql)) {
-            //echo "Registro Realizado con Éxito";
-            // Redirige al cliente a iniciar sesión
-            header('location: login.php');
-            exit;
+        $userExiste = "SELECT user FROM cliente WHERE user = '$user'";
+        $result = mysqli_query($conn, $userExiste);
+
+        $error_message = "";
+
+        //* El usuario existe
+        if (mysqli_num_rows($result) > 0) {
+            $error_message = "*El Usuario ya existe";
         } else {
-            echo "Error Al Registrar: " . mysqli_error($conn);
+            //* Registrar Cliente
+            $sql = "INSERT INTO cliente (user,pass,nombre,apellido,correo,telefono,rol)
+                    VALUES ('$user','$pass','$nombre','$apellido',
+                            '$correo','$telefono','usuario')";
+
+            if (mysqli_query($conn, $sql)) {
+                //echo "Registro Realizado con Éxito";
+                // Redirige al cliente a iniciar sesión
+                header('location: login.php');
+                exit;
+            } else {
+                echo "Error Al Registrar: " . mysqli_error($conn);
+            }
         }
     }
 ?>
@@ -70,7 +81,7 @@
                     <input type="tel" name="telefono" id="telefono" placeholder="Teléfono" pattern="\+\d{1,3}\d{10}|^\d{10}" title="+123, 123">
                 </div>
 
-                <div class="campo">
+                <div class="campo" id="msg-usuario">
                     <h3> Nombre de Usuario: </h3>
                     <input type="text" name="user" id="user" placeholder="Username" pattern="[^@\/\\,. ]+" title="no se acepta @ / \ , .">
                 </div>
@@ -94,7 +105,51 @@
         </form>
     </section>
 
-    <script src="validacion.js"></script>
+    <script>
+        const error = document.createElement('p');
 
+        function validarRegistro() {
+            // var error_message = "<?php echo $error_message; ?>";
+            
+            const user = document.querySelector('#user').value;
+            const pass = document.querySelector('#pass').value;
+            const nombre = document.querySelector('#nombre').value;
+            const apellido = document.querySelector('#apellido').value;
+            const correo = document.querySelector('#correo').value;
+            const telefono = document.querySelector('#telefono').value;
+
+            const msg = document.querySelector('#msg-register');
+
+            if (user === '' || pass === '' || nombre === '' || apellido === '' || correo === '' || telefono === '') {
+                error.textContent = "*Rellene todos los campos"
+                error.classList.add('msg-error-registro');
+                msg.appendChild(error);
+
+                setTimeout(() => {
+                    error.remove();
+                }, 5000);
+                return false;
+
+            } else {
+                // const msg_usuario = document.querySelector('#msg-usuario');
+            
+                // if (error_message !== "") {
+                //     const error = document.createElement('div');
+                //     error.textContent = error_message;
+                //     error.classList.add('msg-error-registro');
+                //     msg_usuario.appendChild(error);
+
+                //     setTimeout(() => {
+                //         error.remove();
+                //     }, 5000);
+                    
+                //     return false;
+                // }
+
+                return true;
+            }   
+        }
+    </script>
+    <!-- <script src="validacion.js"></script> -->
 </body>
 </html>

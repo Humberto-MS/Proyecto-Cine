@@ -36,7 +36,7 @@
             exit;
         } else {
             // Credenciales no válidas, muestra un mensaje de error
-            $error_message = "Usuario o contraseña incorrectos.";
+            $error_message = "*Usuario o contraseña incorrectos";
         }
     }
 ?>
