@@ -574,9 +574,18 @@ hr {
     color: white;
 }
 
+#mapa {
+    height: 300px;
+    width: 100%;
+}
+
 @media (min-width: 460px) {
     .contenedor-principal-nosotros {
         padding: 122px 8rem 2rem 4rem;
+    }
+
+    #mapa {
+        height: 500px;
     }
 }
 
