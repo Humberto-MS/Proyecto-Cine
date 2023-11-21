@@ -92,5 +92,24 @@
             </div>
         </form>
     </section>
+
+    <script>
+        // Obtener el estado actual del modo claro desde localStorage
+        const isModoClaro = localStorage.getItem('modo-claro') === 'true';
+
+        // Aplicar el modo claro si está activado
+        if ( isModoClaro ) {
+            toggleModoClaro();
+        }
+
+        // Actualizar el estado en localStorage cuando se hace clic en el botón
+        function toggleModoClaro() {
+            const body = document.body;
+            body.classList.toggle ( 'modo-claro' );
+            
+            // Guardar el estado actual del modo claro en localStorage
+            localStorage.setItem ( 'modo-claro', body.classList.contains ('modo-claro') );
+        }
+    </script>
 </body>
 </html>

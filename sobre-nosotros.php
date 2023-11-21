@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MelvinPolis</title>
-
+        
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
@@ -34,6 +34,7 @@
                     <a href="#"> Más &#x25BE; </a>
                     
                     <div class="dropdown-content">
+                        <a style="cursor: pointer" onclick="toggleModoClaro()">Cambiar Modo</a>
                         <a href="contacto.php"> Contacto </a>
                         <a href="sobre-nosotros.php"> Sobre Nosotros </a>
                     </div>
@@ -171,6 +172,11 @@
                 </ol>
             </p>
         </div>
+
+        <div class="contenedor-secundario-nosotros">
+            <h2>¿Dónde nos ubicamos?</h2>
+            <div id="mapa"></div>
+        </div>
     </section>
 
     <hr>
@@ -221,6 +227,52 @@
         <p class="copyright"> ©Copyright 2023. Todos los derechos reservados a MelvinPolis® | Aviso de privacidad | Términos y condiciones </p>
         
     </footer>
+
+    <script>
+        // Obtener el estado actual del modo claro desde localStorage
+        const isModoClaro = localStorage.getItem('modo-claro') === 'true';
+        const body = document.body;
+        const textos = document.querySelectorAll ( 
+            '.contenedor-principal-nosotros p, li, .copyright' );
+
+        // Aplicar el modo claro si está activado
+        if ( isModoClaro ) {
+            toggleModoClaro();
+        }
+
+        // Actualizar el estado en localStorage cuando se hace clic en el botón
+        function toggleModoClaro() {
+            body.classList.toggle('modo-claro');
+
+            if ( body.classList.contains ( 'modo-claro' ) ) {
+                textos.forEach ( texto => texto.style.color = 'black' );
+            } else {
+                textos.forEach ( texto => texto.style.color = 'white' );
+            }
+            
+            // Guardar el estado actual del modo claro en localStorage
+            localStorage.setItem('modo-claro', body.classList.contains('modo-claro'));
+        }
+    </script>
+
+    <script>
+        function inicializarMapa() {
+            var ubicacionCine = { lat: 25.533058, lng: -103.435609 };
+            
+            var mapa = new google.maps.Map ( document.getElementById ( 'mapa' ), {
+                zoom: 15,
+                center: ubicacionCine
+            } );
+            
+            var marcador = new google.maps.Marker ( {
+                position: ubicacionCine,
+                map: mapa,
+                title: 'MelvinPolis'
+            } );
+        }
+    </script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDz_aNb0jhyZ8TOOrHbqg-zJr_VUj0VoJ4&callback=inicializarMapa"></script>
     
 </body>
 </html>

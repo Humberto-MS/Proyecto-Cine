@@ -35,6 +35,7 @@
                     <a href="#"> Más &#x25BE; </a>
                     
                     <div class="dropdown-content">
+                        <a style="cursor: pointer" onclick="toggleModoClaro()">Cambiar Modo</a>
                         <a href="contacto.php"> Contacto </a>
                         <a href="sobre-nosotros.php"> Sobre Nosotros </a>
                     </div>
@@ -145,7 +146,32 @@
         
     </footer>
 
-    <script src="validacion.js"></script>
+    <script>
+        // Obtener el estado actual del modo claro desde localStorage
+        const isModoClaro = localStorage.getItem('modo-claro') === 'true';
+        const body = document.body;
+        const copyright = document.querySelector ( '.copyright' );
 
+        // Aplicar el modo claro si está activado
+        if ( isModoClaro ) {
+            toggleModoClaro();
+        }
+
+        // Actualizar el estado en localStorage cuando se hace clic en el botón
+        function toggleModoClaro() {
+            body.classList.toggle ( 'modo-claro' );
+
+            if ( body.classList.contains ( 'modo-claro' ) ) {
+                copyright.style.color = 'black';
+            } else {
+                copyright.style.color = 'white';
+            }
+            
+            // Guardar el estado actual del modo claro en localStorage
+            localStorage.setItem ( 'modo-claro', body.classList.contains ('modo-claro') );
+        }
+    </script>
+
+    <script src="validacion.js"></script>
 </body>
 </html>

@@ -106,50 +106,25 @@
     </section>
 
     <script>
-        const error = document.createElement('p');
+        // Obtener el estado actual del modo claro desde localStorage
+        const isModoClaro = localStorage.getItem('modo-claro') === 'true';
 
-        function validarRegistro() {
-            // var error_message = "<?php echo $error_message; ?>";
+        // Aplicar el modo claro si está activado
+        if ( isModoClaro ) {
+            toggleModoClaro();
+        }
+
+        // Actualizar el estado en localStorage cuando se hace clic en el botón
+        function toggleModoClaro() {
+            const body = document.body;
+            body.classList.toggle ( 'modo-claro' );
             
-            const user = document.querySelector('#user').value;
-            const pass = document.querySelector('#pass').value;
-            const nombre = document.querySelector('#nombre').value;
-            const apellido = document.querySelector('#apellido').value;
-            const correo = document.querySelector('#correo').value;
-            const telefono = document.querySelector('#telefono').value;
-
-            const msg = document.querySelector('#msg-register');
-
-            if (user === '' || pass === '' || nombre === '' || apellido === '' || correo === '' || telefono === '') {
-                error.textContent = "*Rellene todos los campos"
-                error.classList.add('msg-error-registro');
-                msg.appendChild(error);
-
-                setTimeout(() => {
-                    error.remove();
-                }, 5000);
-                return false;
-
-            } else {
-                // const msg_usuario = document.querySelector('#msg-usuario');
-            
-                // if (error_message !== "") {
-                //     const error = document.createElement('div');
-                //     error.textContent = error_message;
-                //     error.classList.add('msg-error-registro');
-                //     msg_usuario.appendChild(error);
-
-                //     setTimeout(() => {
-                //         error.remove();
-                //     }, 5000);
-                    
-                //     return false;
-                // }
-
-                return true;
-            }   
+            // Guardar el estado actual del modo claro en localStorage
+            localStorage.setItem ( 'modo-claro', body.classList.contains ('modo-claro') );
         }
     </script>
-    <!-- <script src="validacion.js"></script> -->
+
+    <script src="validacion.js"></script>
+
 </body>
 </html>

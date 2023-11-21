@@ -13,6 +13,10 @@ body {
     background-color: var(--gris);
 }
 
+.modo-claro {
+    background-color: #E4DEDE;
+}
+
 /**************************************** Header ************************************/
 header {
     display: flex;
@@ -233,6 +237,7 @@ nav {
 .cartelera h2 {
     text-align: center;
     padding: 1rem;
+    font-weight: bold;
 }
 
 .contenedor-peliculas {
@@ -264,6 +269,7 @@ nav {
     opacity: 0;
     transition: .5s ease;
     background-color: rgb(44 40 47 /70%);
+    border-radius: 5%;
 }
 
 .pelicula:hover .overlay-pelicula {
@@ -568,9 +574,18 @@ hr {
     color: white;
 }
 
+#mapa {
+    height: 300px;
+    width: 100%;
+}
+
 @media (min-width: 460px) {
     .contenedor-principal-nosotros {
         padding: 122px 8rem 2rem 4rem;
+    }
+
+    #mapa {
+        height: 500px;
     }
 }
 
