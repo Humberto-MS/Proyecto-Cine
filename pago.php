@@ -230,5 +230,35 @@
     <script src="https://www.paypal.com/sdk/js?client-id=AYqbtbFUBHWJE13vnIhXF0bXyCu27rauEsdg6SRUncEf960VJx0yniZ-IZCCSAIG1GCNhacyJxegmUgR&currency=USD"></script>
     <script src="app.js"></script>
 
+    <script>
+        // Obtener el estado actual del modo claro desde localStorage
+        const isModoClaro = localStorage.getItem('modo-claro') === 'true';
+        const body = document.body;
+        const titulos = document.querySelectorAll ( 'h2' );
+        const textos = document.querySelectorAll ( '.texto, .copyright' );
+
+        // Aplicar el modo claro si está activado
+        if ( isModoClaro ) {
+            toggleModoClaro();
+        }
+
+        // Actualizar el estado en localStorage cuando se hace clic en el botón
+        function toggleModoClaro() {
+            body.classList.toggle ( 'modo-claro' );
+
+            titulos.forEach ( titulo => {
+                titulo.style.color = 'black';
+                titulo.style.fontWeight = 'bold';
+            } );
+
+            textos.forEach ( texto => {
+                texto.style.color = 'black';
+            } );
+            
+            // Guardar el estado actual del modo claro en localStorage
+            localStorage.setItem ( 'modo-claro', body.classList.contains ('modo-claro') );
+        }
+    </script>
+
 </body>
 </html>

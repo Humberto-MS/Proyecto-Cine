@@ -38,6 +38,7 @@
                     <a href="#"> Más &#x25BE; </a>
                     
                     <div class="dropdown-content">
+                        <a style="cursor: pointer" onclick="toggleModoClaro()">Cambiar Modo</a>
                         <a href="contacto.php"> Contacto </a>
                         <a href="sobre-nosotros.php"> Sobre Nosotros </a>
                     </div>
@@ -196,5 +197,47 @@
     </footer>
 
     <script src="script-index.js"></script>
+
+    <script>
+        // Obtener el estado actual del modo claro desde localStorage
+        const isModoClaro = localStorage.getItem('modo-claro') === 'true';
+        const body = document.body;
+        const textos = document.querySelectorAll ( '.cartelera p, .cartelera h2' );
+        const copyright = document.querySelector ( '.copyright' );
+        const titulo = document.querySelector ( '.cartelera h2' );
+
+        // Aplicar el modo claro si está activado
+        if ( isModoClaro ) {
+            toggleModoClaro();
+        }
+
+        // Actualizar el estado en localStorage cuando se hace clic en el botón
+        function toggleModoClaro() {
+            body.classList.toggle ( 'modo-claro' );
+            
+            if ( body.classList.contains ( 'modo-claro' ) ) {
+                // Modo Claro
+                copyright.style.color = 'black';
+    
+                textos.forEach ( texto => {
+                    texto.style.color = 'black';
+                    texto.style.fontWeight = 'bold';
+                } );
+            } else {
+                // Modo Oscuro
+                copyright.style.color = 'white';
+
+                textos.forEach(texto => {
+                    texto.style.color = 'white';
+                    texto.style.fontWeight = 'normal';
+                });
+                
+                titulo.style.fontWeight = 'bold';
+            }
+
+            // Guardar el estado actual del modo claro en localStorage
+            localStorage.setItem ( 'modo-claro', body.classList.contains ('modo-claro') );
+        }
+    </script>
 </body>
 </html>

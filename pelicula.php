@@ -39,6 +39,7 @@
                     <a href="#"> Más &#x25BE; </a>
                     
                     <div class="dropdown-content">
+                        <a style="cursor: pointer" onclick="toggleModoClaro()">Cambiar Modo</a>
                         <a href="contacto.php"> Contacto </a>
                         <a href="sobre-nosotros.php"> Sobre Nosotros </a>
                     </div>
@@ -363,6 +364,38 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <script>
+        // Obtener el estado actual del modo claro desde localStorage
+        const isModoClaro = localStorage.getItem('modo-claro') === 'true';
+        const body = document.body;
+        const textos = document.querySelectorAll ( 'h2, h3, h4, .seccion-pelicula p, .copyright' );
+        const titulos_modales = document.querySelectorAll ( '.contenido-modal-boletos h2, .contenido-modal-asientos h2' );
+
+        const cont_pelicula = document.querySelector ( '.informacion-pelicula' );
+
+        // Aplicar el modo claro si está activado
+        if ( isModoClaro ) {
+            toggleModoClaro();
+        }
+
+        // Actualizar el estado en localStorage cuando se hace clic en el botón
+        function toggleModoClaro() {
+            body.classList.toggle ( 'modo-claro' );
+
+            if ( body.classList.contains ( 'modo-claro' ) ) {
+                textos.forEach ( texto => texto.style.color = 'black' );
+                cont_pelicula.style.borderRightColor = 'black';
+            } else {
+                textos.forEach ( texto => texto.style.color = 'white' );
+                titulos_modales.forEach ( texto => texto.style.color = 'black' );
+                cont_pelicula.style.borderRightColor = '#e5e7eb83';
+            }
+            
+            // Guardar el estado actual del modo claro en localStorage
+            localStorage.setItem ( 'modo-claro', body.classList.contains ('modo-claro') );
+        }
+    </script>
 
 </body>
 </html>

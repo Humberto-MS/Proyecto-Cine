@@ -34,6 +34,7 @@
                     <a href="#"> Más &#x25BE; </a>
                     
                     <div class="dropdown-content">
+                        <a style="cursor: pointer" onclick="toggleModoClaro()">Cambiar Modo</a>
                         <a href="contacto.php"> Contacto </a>
                         <a href="sobre-nosotros.php"> Sobre Nosotros </a>
                     </div>
@@ -221,6 +222,33 @@
         <p class="copyright"> ©Copyright 2023. Todos los derechos reservados a MelvinPolis® | Aviso de privacidad | Términos y condiciones </p>
         
     </footer>
+
+    <script>
+        // Obtener el estado actual del modo claro desde localStorage
+        const isModoClaro = localStorage.getItem('modo-claro') === 'true';
+        const body = document.body;
+        const textos = document.querySelectorAll ( 
+            '.contenedor-principal-nosotros p, li, .copyright' );
+
+        // Aplicar el modo claro si está activado
+        if ( isModoClaro ) {
+            toggleModoClaro();
+        }
+
+        // Actualizar el estado en localStorage cuando se hace clic en el botón
+        function toggleModoClaro() {
+            body.classList.toggle('modo-claro');
+
+            if ( body.classList.contains ( 'modo-claro' ) ) {
+                textos.forEach ( texto => texto.style.color = 'black' );
+            } else {
+                textos.forEach ( texto => texto.style.color = 'white' );
+            }
+            
+            // Guardar el estado actual del modo claro en localStorage
+            localStorage.setItem('modo-claro', body.classList.contains('modo-claro'));
+        }
+    </script>
     
 </body>
 </html>
