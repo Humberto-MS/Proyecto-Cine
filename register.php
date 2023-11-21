@@ -46,44 +46,46 @@
 </head>
 <body>
     <section class="contenedor-login">
-        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" id="form-registro" onsubmit="return(validarRegistro());">
             <h2> Crea tu cuenta </h2>
 
             <div class="contenedor-campos-login">
                 <div class="campo">
                     <h3> Nombre(s): </h3>
-                    <input type="text" name="nombre" placeholder="Nombre(s)">
+                    <input type="text" name="nombre" id="nombre" placeholder="Nombre(s)" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ, ]+" title="a-z">
                 </div>
 
                 <div class="campo">
                     <h3> Apellidos: </h3>
-                    <input type="text" name="apellido" placeholder="Apellidos">
+                    <input type="text" name="apellido" id="apellido" placeholder="Apellidos" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ, ]+" title="a-z">
                 </div>
 
                 <div class="campo">
                     <h3> Correo: </h3>
-                    <input type="email" name="correo" placeholder="e-mail">
+                    <input type="email" name="correo" id="correo" placeholder="e-mail" title="correo@correo.com">
                 </div>
 
                 <div class="campo">
                     <h3> Teléfono: </h3>
-                    <input type="tel" name="telefono" placeholder="Teléfono">
+                    <input type="tel" name="telefono" id="telefono" placeholder="Teléfono" pattern="\+\d{1,3}\d{10}|^\d{10}" title="+123, 123">
                 </div>
 
                 <div class="campo">
                     <h3> Nombre de Usuario: </h3>
-                    <input type="text" name="user" placeholder="Username">
+                    <input type="text" name="user" id="user" placeholder="Username" pattern="[^@\/\\,. ]+" title="no se acepta @ / \ , .">
                 </div>
 
                 <div class="campo">
                     <h3> Contraseña: </h3>
-                    <input type="password" name="pass" placeholder="Password">
+                    <input type="password" name="pass" id="pass" placeholder="Password">
                 </div>
             </div>
 
-            <div class="mensaje-cuenta-nueva">
-                <p> ¿Ya tienes una cuenta? Inicia sesión </p>
-                <a href="login.php"> aquí </a>
+            <div id="msg-register" style="display: flex; flex-direction: column;">
+                <div class="mensaje-cuenta-nueva">
+                    <p> ¿Ya tienes una cuenta? Inicia sesión </p>
+                    <a href="login.php"> aquí </a>
+                </div>
             </div>        
 
             <div class="alinear-boton">
@@ -110,5 +112,8 @@
             localStorage.setItem ( 'modo-claro', body.classList.contains ('modo-claro') );
         }
     </script>
+
+    <script src="validacion.js"></script>
+
 </body>
 </html>

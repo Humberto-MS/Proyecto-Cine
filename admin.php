@@ -138,7 +138,7 @@
     <h1> Administrador-MelvinPolis </h1>
     <div class="contenedor-admin-peliculas">
         <h2> Base de Datos - Películas </h2>
-        <form class="contenedor-database" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+        <form class="contenedor-database" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" id="form-pelicula" onsubmit="return(validarPelicula());">
             <div class="input">
                 <h3> Título en Español </h3>
                 <input type="text" name="titulo_espanol" id="titulo_espanol" placeholder="Titulo en Español">
@@ -152,42 +152,42 @@
     
             <div class="input">
                 <h3> Imagen </h3>
-                <input type="text" name="imagen" id="imagen" placeholder="Ruta de la Imagen">
+                <input type="text" name="imagen" id="imagen" placeholder="Ruta de la Imagen" pattern="(?!^\d+$)[A-Za-z0-9:/_\\.-]+" title="http, /url, \url">
             </div>
     
             <div class="input">
                 <h3> Sinopsis </h3>
-                <textarea name="sinopsis" id="sinopsis" placeholder="Sinopsis"></textarea>
+                <textarea name="sinopsis" id="sinopsis" placeholder="Sinopsis" title="a-z 0-9" ></textarea>
             </div>
     
             <div class="input">
                 <h3> Clasificación </h3>
-                <input type="text" name="clasificacion" id="clasificacion" placeholder="Clasificación">
+                <input type="text" name="clasificacion" id="clasificacion" placeholder="Clasificación" pattern="[A-Za-z]+(?:-[A-Za-z0-9]{1,2})?" title="b, b-15">
             </div>
     
             <div class="input">
                 <h3> Género </h3>
-                <input type="text" name="genero" id="genero" placeholder="Género">
+                <input type="text" name="genero" id="genero" placeholder="Género" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ, ]+" title="a-z">
             </div>
     
             <div class="input">
                 <h3> Director </h3>
-                <input type="text" name="director" id="director" placeholder="Director">
+                <input type="text" name="director" id="director" placeholder="Director" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ, ]+" title="a-z">
             </div>
     
             <div class="input">
                 <h3> Reparto </h3>
-                <textarea name="reparto" id="reparto" placeholder="Reparto"></textarea>
+                <textarea name="reparto" id="reparto" placeholder="Reparto" title="a-z"></textarea>
             </div>
     
             <div class="input">
                 <h3> Trailer </h3>
-                <input type="text" name="trailer" id="trailer" placeholder="Ruta del Trailer">
+                <input type="text" name="trailer" id="trailer" placeholder="Ruta del Trailer" pattern="(?!^\d+$)[A-Za-z0-9:/_\\.-]+" title="http, /url, \url">
             </div>
     
             <div class="input">
                 <h3> Asientos Disponibles </h3>
-                <input type="text" name="asientos_disponibles" id="asientos_disponibles" placeholder="Asientos Disponibles">
+                <input type="text" name="asientos_disponibles" id="asientos_disponibles" placeholder="Asientos Disponibles" pattern="([1-9]|[1-9][0-9]|100)" title="1-100">
             </div>
     
             <div class="admin-botones"> 
@@ -220,10 +220,10 @@
 
     <div class="contenedor-admin-clientes">
         <h2> Base de Datos - Clientes </h2>
-        <form class="contenedor-database" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+        <form class="contenedor-database" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" id="form-cliente" onsubmit="return(validarCliente());">
             <div class="input">
                 <h3> Usuario </h3>
-                <input type="text" name="user" id="user" placeholder="Usuario">
+                <input type="text" name="user" id="user" placeholder="Usuario" pattern="[^@\/\\,. ]+" title="no se acepta @ / \ , .">
                 <input type="hidden" name="user_original" id="user_original">
             </div>
     
@@ -234,22 +234,22 @@
     
             <div class="input">
                 <h3> Nombre/s </h3>
-                <input type="text" name="nombre" id="nombre" placeholder="Nombre/s">
+                <input type="text" name="nombre" id="nombre" placeholder="Nombre/s" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ, ]+" title="a-z">
             </div>
     
             <div class="input">
                 <h3> Apellidos </h3>
-                <input type="text" name="apellido" id="apellido" placeholder="Apellido">
+                <input type="text" name="apellido" id="apellido" placeholder="Apellido" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ, ]+" title="a-z">
             </div>
     
             <div class="input">
                 <h3> Correo Electrónico </h3>
-                <input type="text" name="correo" id="correo" placeholder="Correo Electrónico">
+                <input type="email" name="correo" id="correo" placeholder="Correo Electrónico" title="correo@correo.com">
             </div>
     
             <div class="input">
                 <h3> Teléfono </h3>
-                <input type="text" name="telefono" id="telefono" placeholder="Teléfono">
+                <input type="text" name="telefono" id="telefono" placeholder="Teléfono" pattern="\+\d{1,3}\d{10}|^\d{10}" title="+123, 123">
             </div>
 
             <div class="admin-botones"> 
@@ -286,7 +286,6 @@
         </form>
     </div>
     
-
     <script>
         // Evento de cambio para el combobox de películas
         const idPelicula = document.getElementById('id-pelicula');
@@ -376,5 +375,7 @@
             });
         });
     </script>
+
+    <script src="validacion.js"></script>
 </body>
 </html>
